@@ -1,0 +1,15 @@
+setwd("/home/fcabla/Documentos/UPM/TFM")
+
+source("code/R/dbpedia_data.R")
+source("code/R/name_entity.R")
+source("code/R/text_preprocess_vectorization_q.R")
+
+#df <- read_TTL_file("datasets/test_abstracts_long.ttl", c("individual","property","abstract", "dot"))
+#df <- read_merge_TTL_files("datasets/long_abstracts_en.ttl", "datasets/instance_types_en.ttl", c("individual","property","abstract", "dot"), c("individual","property","type", "dot"), "individual")
+#df <- get_sample_df(df, 0.0001)
+#df <- annotate_dataframe(df, 0.3)
+#write_csv_file("datasets/abstracts_types_annotated_short.csv", df)
+df <- read.csv("datasets/abstracts_types_annotated_short.csv", stringsAsFactors = FALSE)
+df <- annotate_dataframe(df, 0.3)
+tdm <- process_dataframe(df, custom_sw = c("@en", "\"@en"))
+#df <- read_TTL_file("datasets/long_abstracts_en.ttl", c("individual","property","abstract", "dot"))

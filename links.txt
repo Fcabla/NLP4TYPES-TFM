@@ -1,0 +1,11 @@
+https://nlp.stanford.edu/IR-book/html/htmledition/support-vector-machines-and-machine-learning-on-documents-1.html
+http://nlp4types.linkeddata.es/
+https://ner.vse.cz/datasets/linkedhypernyms/
+https://github.com/idafensp/NLP4Types
+https://www.researchgate.net/publication/221614198_Hierarchical_Document_Categorization_with_Support_Vector_Machines
+https://www.sciencedirect.com/science/article/abs/pii/S1570826816300166
+https://wiki.dbpedia.org/downloads-2016-10
+https://medium.com/@ODSC/build-a-multi-class-support-vector-machine-in-r-abcdd4b7dab6
+-------------GSOC------------------------
+https://forum.dbpedia.org/t/web-app-to-generate-rdf-from-dbpedia-abstracts-gsoc2021/948
+https://summerofcode.withgoogle.com/
