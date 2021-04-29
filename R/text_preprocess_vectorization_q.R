@@ -1,5 +1,8 @@
 library(quanteda)
 #https://quanteda.io/reference/convert.html
+
+# Function to process a dataframe applying classical text preprocessing techniques
+# Transform the preprocessed text in to a term document matrix and returns it
 process_dataframe <- function(df, stem_opt=TRUE, punct_remove=TRUE, tfidf=TRUE, custom_sw){
   df$abstract <- as.character(df$abstract)
   my_corpus <- corpus(df, text_field = "abstract", docid_field = "individual")
