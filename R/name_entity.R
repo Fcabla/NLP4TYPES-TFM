@@ -42,6 +42,12 @@ annotate_dataframe <- function(df, confidence_lvl){
   return(df)
 }
 
+# Function to annotate a raw text (inference end user)
+annotate_raw_text <- function(raw_text, confidence_lvl){
+  result_text <- paste(raw_text, get_types_from_text(raw_text, confidence_lvl), sep = " ")
+  return(result_text)
+}
+
 # Not used right now (testing)
 annotate_row <- function(x, confidence_lvl){
   x[2] <- paste(x[2], get_types_from_text(x[2],confidence_lvl), sep = " ")

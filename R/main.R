@@ -33,3 +33,10 @@ dbo_tree <- get_tree_from_ontology(ontology_from_URL=TRUE)
 metrics <- evaluate_results(predicted, te_tdm, dbo_tree)
 print_measurements(metrics)
 # ToDo: out sample classification, unseen data, final user...
+
+predict_new_text <- function(raw_text, model){
+  txt <- annotate_raw_text(raw_text, 0.3)
+  new_tdm <- process_text(test, custom_sw = c("@en", "\"@en"))
+  results <- predict(model, newdata = test1, type="class")
+  return(results)
+}
