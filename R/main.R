@@ -5,6 +5,7 @@ source("code/R/name_entity.R")
 source("code/R/text_preprocess_vectorization_q.R")
 source("code/R/classifiers.R")
 source("code/R/measurements.R")
+source("code/R/ontology_trees.R")
 ####################################################################################################
 # Read both ttl files and store a sample of the merged files to do the developing with a smaller df
 ####################################################################################################
@@ -27,4 +28,8 @@ tdm <- process_dataframe(df, custom_sw = c("@en", "\"@en"))
 splitted_df <- split_data_trte(tdm, trte_split = 0.75)
 tr_tdm <- splitted_df[[1]]; te_tdm <- splitted_df[[2]]
 model <- build_train_model(tr_tdm, crossvalidation=FALSE, k_crossval=5)
-metrics <- evaluate_results(model, te_tdm)
+predicted <- predict_abstracts(model, te_tdm)
+dbo_tree <- get_tree_from_ontology(ontology_from_URL=TRUE)
+metrics <- evaluate_results(predicted, te_tdm, dbo_tree)
+print_measurements(metrics)
+# ToDo: out sample classification, unseen data, final user...

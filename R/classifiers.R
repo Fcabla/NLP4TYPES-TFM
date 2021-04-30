@@ -4,6 +4,7 @@ library("quanteda.textmodels")
 #library(RTextTools)
 #https://rdrr.io/cran/quanteda.textmodels/man/textmodel_svm.html
 
+# Function to split the current dataframe in to training and test
 split_data_trte <- function(tdm, trte_split = 0.75){
   # Train/test or train for crossval and test for validation
   # Splitting the dataset
@@ -19,6 +20,8 @@ split_data_trte <- function(tdm, trte_split = 0.75){
   return(dtms)
 }
 
+# Build the svm model with quanteda
+# Crossvalidation not working!, why??
 build_train_model <- function(train, crossvalidation=TRUE, k_crossval=5){
   # Building the model
   tmod <- textmodel_svm(train, y = train$type)
@@ -36,8 +39,8 @@ svm_quanteda <- function(tdm){
   predict(tmod)
 }
 
-# Not used
-svm_rtexttolls <- function(){
+# Not used (svm with rtexttools)
+svm_rtexttools <- function(){
   #rtextools
   container <- create_container(convert(tdm, to = "matrix"), tdm$type, trainSize = 1:200, testSize = 201:304, virgin = FALSE)
   model_SVM <- train_model(container,"SVM")
@@ -45,7 +48,7 @@ svm_rtexttolls <- function(){
   analytics <- create_analytics(container, cbind(SVM_CLASSIFY))
 }
 
-# Not used
+# Not used (svm with e1071)
 svm_e1071 <- function(tdm, df){
   df_tdm <- convert(tdm, to="data.frame")
   df_tdm <- subset(df_tdm, select = -type )
@@ -70,4 +73,3 @@ svm_e1071 <- function(tdm, df){
   return(prediction)
 }
 
-#p <- svm_e1071(tdm,df)
