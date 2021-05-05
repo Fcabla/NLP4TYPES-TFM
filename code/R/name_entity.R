@@ -7,6 +7,7 @@ library(jsonlite)
 
 #DBPEDIA_PATH <- "https://api.dbpedia-spotlight.org/en/annotate"
 DBPEDIA_PATH <- "http://localhost:2222/rest/annotate"
+test_text <- "Animalia is an illustrated children's book by Graeme Base. It was originally published in 1986, followed by a tenth anniversary edition in 1996, and a 25th anniversary edition in 2012. Over three million copies have been sold. A special numbered and signed anniversary edition was also published in 1996, with an embossed gold jacket."
 
 # Function to get the entity types of a raw text with a certain confidence level.
 # Returns the entity types as a concatenated text with spaces
