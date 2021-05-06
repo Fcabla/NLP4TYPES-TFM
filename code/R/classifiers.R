@@ -35,7 +35,6 @@ build_train_model <- function(train, crossvalidation=TRUE, k_crossval=5){
 predict_abstracts <- function(model, test){
   # Predict https://www.rdocumentation.org/packages/quanteda.textmodels/versions/0.9.3/topics/predict.textmodel_svm
   predicted <- predict(model, newdata = test, type = "class")
-  print(predicted)
   return(predicted)
 }
 

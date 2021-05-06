@@ -8,7 +8,6 @@ read_TTL_file <- function(path_file, column_names){
                    skip = 1,escape_double=FALSE, escape_backslash=TRUE, quote="\"")
   df <- subset(df, select = c(column_names[1], column_names[3]))
   df <- head(df,-1)
-  print(tail(df, 10))
   return(df)
 }
 
@@ -39,7 +38,7 @@ get_sample_df <- function(df, perc_sample){
   print(nsample)
   df <- df[sample(nrow(df), nsample), ]
   return(df)
-}
+} 
 
 # Extract from a dataframe a set of types that are unique, 1 instance per type of type (not used now)
 get_unique_types <- function(df){

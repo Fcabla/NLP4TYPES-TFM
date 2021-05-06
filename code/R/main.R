@@ -11,27 +11,32 @@ source("code/R/ontology_trees.R")
 # Config parameters #
 #####################
 # Files location and column names
-abstracts_file_path <- ""
-types_file_path <- ""
-abstracts_col_names <- ""
-types_col_names <- ""
+abs_file_path <- "datasets/long_abstracts_en.ttl"
+types_file_path <- "datasets/instance_types_en.ttl"
+abs_col_names <- c("individual","property","abstract", "dot")
+typ_col_names <- c("individual","property","type", "dot")
+join_by <- "individual"
+use_sampled_df <- TRUE
+# 1 -> 3M, 0.33 -> 1M, 0.0033 -> 10k
+sample_percentage <- 0.33
 
 # Name entity
 use_ne <- TRUE
 use_only_ne <- FALSE  # ToDo: return only ne types
-confidence_lvl <- 0.3
+confidence_lvl <- 0.33
 service_url <- DBPEDIA_PATH <- "http://localhost:2222/rest/annotate"
 
 # text preprocessing and vectorization
 use_preprocessing <- TRUE
-custom_stopwords <- c("@en", "\"@en")
-use_stem <- TRUE
-use_lemm <- FALSE  # ToDo: add lemmatization
+use_stw <-TRUE
+custom_stw <- c("@en", "\"@en")
+use_stem <- FALSE
+use_lemm <- TRUE  
 remove_punctuation <- TRUE # Check if original does it
 use_tfidf <- TRUE
 
 # Classification
-trte_split <- 0.8
+train_percent <- 0.8
 use_crossval <- TRUE
 crossval_folds <- 5
 
@@ -44,6 +49,38 @@ ontology_from_URL=TRUE # Finish
 # Testing
 test_text <- "Animalia is an illustrated children's book by Graeme Base. It was originally published in 1986, followed by a tenth anniversary edition in 1996, and a 25th anniversary edition in 2012. Over three million copies have been sold. A special numbered and signed anniversary edition was also published in 1996, with an embossed gold jacket."
 
+##################
+# Start workflow #
+##################
+# 1. Read files
+df <- read_merge_TTL_files(abs_file_path, types_file_path, abs_col_names, typ_col_names, join_by)
+print(paste("Total num of samples: ", dim(df)[1]))
+if(use_sampled_df)
+  df <- get_sample_df(df, sample_percentage)
+  print(paste("Sampled df num of samples: ", dim(df)[1]))
+  
+# 2. Name entity
+if(use_ne)
+  df <- annotate_dataframe(df, confidence_lvl, use_only_ne) 
+
+# 3. preprocess and vectorization
+if(use_preprocessing){
+  tdm <- process_dataframe(df, stw_opt = use_stw, punct_remove = remove_punctuation, lemm_opt = use_lemm, stem_opt = use_stem, tfidf = use_tfidf, custom_sw =  custom_stw)
+}else{
+  tdm <- process_dataframe(df, stw_opt = FALSE, punct_remove = FALSE, lemm_opt = FALSE, stem_opt = FALSE, tfidf = use_tfidf, custom_sw =  "")
+}
+
+# 4. Classifier
+splitted_df <- split_data_trte(tdm, trte_split = train_percent)
+tr_tdm <- splitted_df[[1]]; te_tdm <- splitted_df[[2]]
+model <- build_train_model(tr_tdm, crossvalidation=use_crossval, k_crossval=crossval_folds)
+predicted <- predict_abstracts(model, te_tdm)
+
+# 5. Ontology tree and metrics
+dbo_tree <- get_tree_from_ontology(ontology_from_URL=TRUE)
+metrics <- evaluate_results(predicted, te_tdm, dbo_tree)
+print_measurements(metrics)
+
 ####################################################################################################
 # Read both ttl files and store a sample of the merged files to do the developing with a smaller df
 ####################################################################################################
@@ -53,24 +90,6 @@ test_text <- "Animalia is an illustrated children's book by Graeme Base. It was 
 #df <- get_sample_df(df, 0.0001)
 #df <- annotate_dataframe(df, 0.3)
 #write_csv_file("datasets/abstracts_types_annotated_short.csv", df)
-
-####################
-# Initial dataflow, developing with a smaller dataframe
-####################
-df <- read.csv("datasets/abstracts_types_annotated_short.csv", stringsAsFactors = FALSE)
-# Encode types to perform classification with certain classification libraries
-#df_unique_types <- get_unique_types(df)
-#df <- encode_df_types(df, df_unique_types)
-df <- annotate_dataframe(df, 0.3)
-tdm <- process_dataframe(df, custom_sw = c("@en", "\"@en"))
-splitted_df <- split_data_trte(tdm, trte_split = 0.75)
-tr_tdm <- splitted_df[[1]]; te_tdm <- splitted_df[[2]]
-model <- build_train_model(tr_tdm, crossvalidation=FALSE, k_crossval=5)
-predicted <- predict_abstracts(model, te_tdm)
-dbo_tree <- get_tree_from_ontology(ontology_from_URL=TRUE)
-metrics <- evaluate_results(predicted, te_tdm, dbo_tree)
-print_measurements(metrics)
-# ToDo: out sample classification, unseen data, final user...
 
 predict_new_text <- function(raw_text, model){
   txt <- annotate_raw_text(raw_text, 0.3)
