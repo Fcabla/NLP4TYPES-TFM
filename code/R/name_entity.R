@@ -17,7 +17,7 @@ get_types_from_text <- function(raw_text, confidence_lvl, retry_num = 0){
     # get only the dbpedia data
     #types <- regmatches(types, gregexpr("DBpedia:[a-zA-Z]*", types))
     types <- regmatches(types, gregexpr("(?<=DBpedia:)[a-zA-Z]*", types, perl = TRUE))
-    Sys.sleep(0.2)
+    #Sys.sleep(0.2)
     return(paste(unlist(types), collapse = ' '))
   }else{
     print(status_code(request))
@@ -33,18 +33,24 @@ get_types_from_text <- function(raw_text, confidence_lvl, retry_num = 0){
 # Take a dataframe and add to each abstract the entity types extracted by the function get_types_from_text(..)
 # dont like this approach (use transform or apply)
 annotate_dataframe <- function(df, confidence_lvl, use_only_ne){
+  total_rows <- nrow(df)
+  pb <- txtProgressBar(min = 0, max = total_rows, style = 3)
   if(use_only_ne){
     # Return only the type of entities
-    for (row in 1:nrow(df)) {
+    for (row in 1:total_rows) {
       df[row, ]$abstract <- get_types_from_text(df[row,]$abstract, confidence_lvl)
+      #print(paste(row,"/",nrow(df)))
+      setTxtProgressBar(pb, row)
     }
   }else{
     # Return abstracts + type of entities
-    for (row in 1:nrow(df)) {
+    for (row in 1:total_rows) {
       df[row, ]$abstract <- paste(df[row, ]$abstract, get_types_from_text(df[row,]$abstract, confidence_lvl), sep = " ")
+      #print(paste(row,"/",nrow(df)))
+      setTxtProgressBar(pb, row)
     }
   }
-  
+  close(pb)
   #df <- transform(df, abstract = paste(abstract, get_types_from_text(abstract,confidence_lvl), sep = " "))
   #df$test <- paste(x[2], get_types_from_text(x[2],confidence_lvl), sep = " ")
   #apply(df, 1, get_types_from_text, confidence_lvl)

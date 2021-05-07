@@ -1,0 +1,71 @@
+Experiments:
+ 
+5-Fold evaluation results (original) (lemma, abs, ne)
+------------------------------------------------------
+Resources	Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------
+10K			0.734		0.894	0.886		0.890
+1M			0.825		0.944	0.939		0.942	
+Full(3M)	0.835		0.952	0.949		0.950
+
+5-Fold evaluation results (reproduced) (lemma, abs, ne, pp)
+------------------------------------------------------
+Resources	Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------
+10K			0.757		0.895	0.892		0.893		
+1M			x			x		x			x
+Full(3M)	x			x		x			x
+
+5-Fold evaluation results (reproduced) (lemma, abs, ne)
+------------------------------------------------------
+Resources	Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------
+10K			0.763		0.904	0.899		0.901		
+1M			x			x		x			x
+Full(3M)	x			x		x			x
+
+*********************************************************************************
+
+5-Fold 1M entries (original) abstracts, name entity recognition, preprocessing
+------------------------------------------------------------------
+ABS		NER		PP		Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------------------
+y		y		n 		0.825		0.944	0.939		0.942
+y		y		y		0.811		0.937	0.932		0.935
+y		n 		n 		0.790		0.937	0.930		0.933
+y		n 		y		0.779		0.929	0.921		0.925
+n 		y 		n 		0.568		0.782	0.782		0.782
+
+5-Fold 1M entries (reproduced) abstracts, name entity recognition, preprocessing
+------------------------------------------------------------------
+ABS		NER		PP		Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------------------
+y		y		n 		x			x		x			x
+y		y		y		x			x		x			x
+y		n 		n 		x			x		x			x
+y		n 		y		x			x		x			x
+n 		y 		n 		x			x		x			x
+
+*********************************************************************************
+
+Gold standard evaluation (original)
+------------------------------------------------------
+Resources	Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------
+10K			0.205		0.669	0.624		0.645
+1M			0.420		0.811	0.807		0.809
+Full(3M)	0.449		0.827	0.822		0.825
+------------------------------------------------------
+hSVM		0.548		0.890	0.665		0.761
+SDType		0.338		0.809	0.641		0.715
+
+Gold standard evaluation (reproduced)
+------------------------------------------------------
+Resources	Accuracy	hPrec	hRecall		hF-measure
+------------------------------------------------------
+10K			x			x		x			x
+1M			x			x		x			x
+Full(3M)	x			x		x			x
+------------------------------------------------------
+hSVM		0.548		0.890	0.665		0.761
+SDType		0.338		0.809	0.641		0.715
