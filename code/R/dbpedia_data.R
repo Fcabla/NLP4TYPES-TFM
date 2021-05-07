@@ -35,7 +35,6 @@ remove_owl_thing_rows <- function(df){
 # Take the original dataframe and return a sample of it
 get_sample_df <- function(df, perc_sample){
   nsample <- perc_sample * nrow(df)
-  print(nsample)
   df <- df[sample(nrow(df), nsample), ]
   return(df)
 } 

@@ -57,7 +57,7 @@ df <- read_merge_TTL_files(abs_file_path, types_file_path, abs_col_names, typ_co
 print(paste("Total num of samples: ", dim(df)[1]))
 if(use_sampled_df)
   df <- get_sample_df(df, sample_percentage)
-  print(paste("Sampled df num of samples: ", dim(df)[1]))
+  print(paste("Number of instances used in the current experiment: ", dim(df)[1]))
   
 # 2. Name entity
 if(use_ne)
