@@ -53,4 +53,14 @@ encode_df_types <- function(df, df_unique_types){
   return(df)
 }
 
+remove_resources_url <- function(df, df_columns){
+  for (cl in df_columns){
+    df[[cl]] <- gsub("<http://dbpedia.org/(resource|ontology)/(.*)>", "\\2", df[[cl]])
+    #<http:\/\/dbpedia\.org\/(resource|ontology)\/(.*)>
+    # 1st group \\1 captures resource or ontology, 2nd group captures the type or individual
+  }
+  return(df)
+}
+
+
 # https://rstudio-pubs-static.s3.amazonaws.com/223076_ba9864e5b73146e7a184fa8d8f14fc21.html

@@ -21,7 +21,7 @@ library(quanteda.textmodels)
 # hF <- (2*hP*hR)/(hP+hR)
 
 # Function to evaluate the performance of the model
-evaluate_results <- function(predicted, test, tree){
+evaluate_results <- function(predicted, test, ont_tree){
   # Initialize variables
   hits <- 0
   intersection_num <- 0
@@ -41,8 +41,8 @@ evaluate_results <- function(predicted, test, tree){
     }
     
     # Find path to root from the label (hierarchical) --> tree
-    pr_path <- FindNode(dbo_tree, pr_label)$path
-    tr_path <- FindNode(dbo_tree, tr_label)$path
+    pr_path <- FindNode(ont_tree, pr_label)$path
+    tr_path <- FindNode(ont_tree, tr_label)$path
     
     # Accumulate the num of classes in both paths, lenght of predicted path and length of true labels path
     intersection_num <- intersection_num + sum(pr_path == tr_path)
@@ -59,6 +59,7 @@ evaluate_results <- function(predicted, test, tree){
   # accuracy <- sum(test$type == predicted)/length(predicted)
   
   metrics <- c(acc, hP, hR, hF)
+  names(metrics) <- c("acc", "hP", "hR", "hF")
   return(metrics)
 }
 
