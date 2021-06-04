@@ -121,7 +121,7 @@ annotate_dataframe <- function(df, confidence_lvl=0.33, dbo_only=TRUE, use_ne_pa
   return(ne_types_df)
 }
 
-annotate_dataframe_dict <- function(df, types_dict, dbo_only=TRUE, use_ne_path2root = FALSE, dbo_tree=NULL, printable_names=FALSE, printable_names_df = NULL){
+annotate_dataframe_dict <- function(df, types_dict, dbo_only=TRUE, use_ne_path2root = FALSE, dbo_tree=NULL, path_types_dic=NULL, printable_names=FALSE, printable_names_df = NULL){
   ne_types_df <- copy(types_dict)
   ne_types_df <- merge(x=df, y=ne_types_df, by="individual", all.x = TRUE)
   ne_types_df <- data.frame(individual=ne_types_df$individual, ne_types=ne_types_df$all_types, stringsAsFactors = FALSE)
@@ -135,8 +135,19 @@ annotate_dataframe_dict <- function(df, types_dict, dbo_only=TRUE, use_ne_path2r
     #ne_types_df$ne_types <- strsplit(ne_types_df[[2]],split=" ")
   }
   if(use_ne_path2root){
-    # not done yet
-    ne_types_df$ne_types <- sapply(ne_types_df$ne_types, find_types_path, ont_tree=dbo_tree)
+    if(!is.null(path_types_dic)){
+      print("using dict")
+      ne_types_df$ne_types <- sapply(ne_types_df$ne_types, find_types_path_dict, path_types_dic=path_types_dic)
+    } else if(!is.null(dbo_tree)){
+      print("using ont tree")
+      # not done yet
+      ne_types_df$ne_types <- sapply(ne_types_df$ne_types, find_types_path, ont_tree=dbo_tree)
+    }else{
+      print("ERROR PATH2ROOT ont tree nor dict not found")
+      return()
+    }
+    
+    
   }
   
   if(printable_names){

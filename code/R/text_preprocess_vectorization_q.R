@@ -1,5 +1,6 @@
 library(quanteda)
 library(udpipe)
+library(text2vec)
 #https://quanteda.io/reference/convert.html
 
 preprocess_dataframe_abstracts <- function(df, stw_opt = TRUE, punct_remove = TRUE, stem_opt = TRUE, lemm_opt = FALSE, custom_sw = "", language = "english"){
@@ -87,4 +88,32 @@ vectorizate_corpus <- function(crps, stw_opt = TRUE, punct_remove = TRUE, stem_o
   if(tfidf)
     tdm <- dfm_tfidf(tdm)
   return(tdm)
+}
+
+vectorizate_dataframe_t2v <- function(df){
+  # http://text2vec.org/vectorization.html
+  it_train = itoken(df$abstract, 
+                    preprocessor = tolower, 
+                    tokenizer = word_tokenizer, 
+                    ids = df$individual, 
+                    progressbar = T)
+  vocab = create_vocabulary(it_train)
+  
+  vectorizer = vocab_vectorizer(vocab)
+  dtm_train = create_dtm(it_train, vectorizer)
+  
+  #dtm_train_l2_norm = normalize(dtm_train, "l2")
+  
+  # define tfidf model
+  tfidf = TfIdf$new(smooth_idf = T, norm = "l2")
+  # fit model to train data and transform train data with fitted model
+  dtm_train_tfidf = fit_transform(dtm_train, tfidf)
+  # tfidf modified by fit_transform() call!
+  # apply pre-trained tf-idf transformation to test data
+  #dtm_test_tfidf = create_dtm(it_test, vectorizer)
+  #dtm_test_tfidf = transform(dtm_test_tfidf, tfidf)
+  
+  return(dtm_train_tfidf)
+  #tf = TfIdfVectorizer$new(min_df = 1,max_df = 1.0,ngram_range = c(1, 1),split = " ",lowercase = T,smooth_idf = T,norm = T)
+  #tf$fit_transform(abstracts_list)
 }

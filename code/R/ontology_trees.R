@@ -8,9 +8,9 @@ DBO_URL <- "http://mappings.dbpedia.org/server/ontology/dbpedia.owl"
 # https://cran.r-project.org/web/packages/data.tree/vignettes/data.tree.html#data.tree-basics
 
 # Function to transform an Ontology from an URL to class hierarchy (network mode)
-ontology_to_class_hierarchy_URL <- function(ontology_url = DBO_URL, remove_url = TRUE){
+ontology_to_class_hierarchy_URL <- function(resource = DBO_URL, remove_url = TRUE){
   # Parse the RDF 
-  rdf <- rdf_parse(doc = ontology_url)
+  rdf <- rdf_parse(doc = resource)
   # https://stackoverflow.com/questions/19453072/importing-dbpedias-class-hierarchy
   # https://stackoverflow.com/questions/43125270/sparql-dbpedia-filter-out-specific-results
   #<http://www.w3.org/2002/07/owl#Thing>
@@ -59,6 +59,17 @@ find_types_path <- function(x, ont_tree){
     x[i] <- typs
   }
 }
+
+# x is a collection of types
+find_types_path_dict <- function(x, path_types_dic){
+  if(length(x)>0){
+    typs <- character(0)
+    for (i in x) {
+      typs <- c(typs, path_types_dic[[i]])
+    }
+    x[i] <- typs
+  }
+}
 # Function to transform an Ontology from an owl file to class hierarchy (network mode)
 ontology_class_hierarchy_File <- function(){}
 
@@ -70,8 +81,8 @@ get_tree_from_class_hierarchy <- function(class_hierarchy){
 }
 
 # Function to get tree from ontology (to do/finish)
-get_tree_from_ontology <- function(ontology_from_URL=TRUE, remove_URL = TRUE){
-  class_hierarchy <- ontology_to_class_hierarchy_URL(ontology_url = DBO_URL, remove_URL)
+get_tree_from_ontology <- function(resourc = DBO_URL, remove_URL = TRUE){
+  class_hierarchy <- ontology_to_class_hierarchy_URL(resource = resourc, remove_URL)
   
   #if(get_en_names){
   #  en_names <- data.frame(class_ontology_name=class_hierarchy$subclass, class_name=class_hierarchy$labelEn, stringsAsFactors = FALSE)
@@ -98,6 +109,24 @@ load_tree <- function(tree_path_file){
   tree_network_df <- read.csv(file=tree_path_file)
   dbo_tree <- get_tree_from_class_hierarchy(tree_network_df)
   return(dbo_tree)
+}
+
+make_path_type_dict <- function(df, ontology_tree){
+  type_names <- as.character(df$class_ontology_name)
+  type_paths <- vector("list", length(type_names))
+  
+  for (row in 1:nrow(df)) {
+    t <- FindNode(ontology_tree, type_names[[row]])$path
+    if(is.null(t)){
+      type_paths[[row]] <- c("<owl:thing>")
+    }else{
+      type_paths[[row]] <- t
+    }
+  }
+  dic <- type_paths
+  names(dic) <- type_names
+  dic <- c(dic, RaceHorse=dic[["HorseRace"]])
+  return(dic)
 }
 
 '

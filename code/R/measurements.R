@@ -28,7 +28,8 @@ evaluate_results <- function(predicted, test, ont_tree){
   hPrec_den <- 0
   hRec_den <- 0
   num_samples <- length(predicted)
-  true_labels <- as.list(test$type)
+  #true_labels <- as.list(test$type)
+  true_labels <- test
   
   # For each pair predicted, true_label
   for(i in 1:num_samples){
@@ -45,11 +46,11 @@ evaluate_results <- function(predicted, test, ont_tree){
     tr_path <- FindNode(ont_tree, tr_label)$path
     
     # Accumulate the num of classes in both paths, lenght of predicted path and length of true labels path
-    intersection_num <- intersection_num + sum(pr_path == tr_path)
+    #intersection_num <- intersection_num + sum(pr_path == tr_path)
+    intersection_num <- intersection_num + length(intersect(pr_path, tr_path))
     hPrec_den <- hPrec_den + length(pr_path)
     hRec_den <- hRec_den + length(tr_path)
   }
-  
   acc <- hits / num_samples
   hP <- intersection_num / hPrec_den
   hR <- intersection_num / hRec_den
@@ -63,6 +64,54 @@ evaluate_results <- function(predicted, test, ont_tree){
   return(metrics)
 }
 
+evaluate_results_dict <- function(predicted, test, dic){
+  # Initialize variables
+  hits <- 0
+  intersection_num <- 0
+  hPrec_den <- 0
+  hRec_den <- 0
+  num_samples <- length(predicted)
+  #true_labels <- test$type
+  true_labels <- as.character(test)
+  predicted <- as.character(predicted)
+  # For each pair predicted, true_label
+  for(i in 1:num_samples){
+    pr_label <- predicted[i]
+    tr_label <- true_labels[i]
+    
+    # Check if they are the same --> regular accuracy
+    if(pr_label == tr_label){
+      hits <- hits + 1
+    }
+    
+    # Find path to root from the label (hierarchical) --> tree
+    pr_path <- dic[[pr_label]]
+    tr_path <- dic[[tr_label]]
+    
+    if(is.null(pr_path)){
+      print(pr_label)
+    }
+    if(is.null(tr_path)){
+      print(tr_label)
+    }
+    # Accumulate the num of classes in both paths, lenght of predicted path and length of true labels path
+    #intersection_num <- intersection_num + sum(pr_path == tr_path)
+    intersection_num <- intersection_num + length(intersect(pr_path, tr_path))
+    hPrec_den <- hPrec_den + length(pr_path)
+    hRec_den <- hRec_den + length(tr_path)
+  }
+  acc <- hits / num_samples
+  hP <- intersection_num / hPrec_den
+  hR <- intersection_num / hRec_den
+  hF <- (2 * hP * hR) / (hP + hR)
+  
+  # Alternative to get the accuracy
+  # accuracy <- sum(test$type == predicted)/length(predicted)
+  
+  metrics <- c(acc, hP, hR, hF)
+  names(metrics) <- c("acc", "hP", "hR", "hF")
+  return(metrics)
+}
 # Print results
 print_measurements <- function(metrics){
   print(paste("Accuracy: ", metrics[1]))

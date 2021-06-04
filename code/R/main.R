@@ -8,12 +8,12 @@ source("code/R/measurements.R")
 source("code/R/ontology_trees.R")
 
 library(data.table)
-
+ 
 #####################
 # Config parameters #
 #####################
 # en or es
-lang <- "es"
+lang <- "en"
 print(paste("Using language:",lang,", please check the paths and services are according to the lang selected"))
 # Files location and column names
 #abs_file_path <- "datasets/en/long_abstracts_en.ttl"
@@ -26,36 +26,37 @@ join_by <- "individual"
 use_sampled_df <- TRUE
 remove_URL <- TRUE
 # 1 -> 3M, 0.33 -> 1M, 0.0033 -> 10k
-sample_percentage <- 0.0033 
+sample_percentage <- 0.33
 
 # Name entity
 use_ne <- TRUE
-use_only_ne <- FALSE  # ToDo: return only ne types
+use_only_ne <- FALSE  
 confidence_lvl <- 0.33
 service_url <- DBPEDIA_PATH <- "http://localhost:2222/rest/annotate"
 #path_dict_ne <- "datasets/en/types_dict_en.csv"
 path_dict_ne <- paste("datasets/", lang,"/types_dict_",lang,".csv",sep = "")
 use_only_dict <- TRUE  # To use if the dict contains every individual
 dbo_only <- TRUE
+use_ne_path2root <- TRUE
+use_printable_names <- TRUE
 
 # text preprocessing and vectorization
-use_preprocessing <- TRUE
+use_preprocessing <- FALSE
 use_stw <-TRUE
 custom_stw <- c("@en", "\"@en", "@es", "\"@es")
 use_stem <- TRUE
-use_lemm <- TRUE  
+use_lemm <- FALSE  
 remove_punctuation <- FALSE # Check if original does it
 use_tfidf <- TRUE
 
 # Classification
 train_percent <- 0.8
-use_crossval <- TRUE
+use_crossval <- FALSE
 crossval_folds <- 5
 
 # Ontology trees
-DBO_URL <- "http://mappings.dbpedia.org/server/ontology/dbpedia.owl"
-ontology_from_URL=TRUE # Finish
-get_printable_names <- TRUE
+ont_url <- "http://mappings.dbpedia.org/server/ontology/dbpedia.owl"
+ont_path <- "datasets/dbpedia_2016-10.owl"
 path_printable_names <- paste("datasets/", lang,"/printable_names_",lang,".csv",sep = "")
 # Measurements
 
@@ -73,6 +74,8 @@ print(paste("    Total num of samples: ", dim(df)[1]))
 if(remove_URL){
   print("    Removing URLs from resources/types")
   df <- remove_resources_url(df, c("individual", "type"))
+  # RaceHorse not working!
+  #df$type[df$type == "RaceHorse"] <- "HorseRace"
 }
   
 if(use_sampled_df)
@@ -81,11 +84,12 @@ print(paste("    Number of instances used in the current experiment: ", dim(df)[
 
 # 2. Get ontology tree
 print("2. Retrieve ontology tree")
-dbo_tree <- get_tree_from_ontology(ontology_from_URL=TRUE)
+dbo_tree <- get_tree_from_ontology(resourc = ont_path)
 
-if(get_printable_names){
-  printable_names <- read.csv(path_printable_names, header=TRUE, stringsAsFactors=F)
-}
+#if(use_printable_names){}
+printable_names <- read.csv(path_printable_names, header=TRUE, stringsAsFactors=F)
+path_types_dic <- make_path_type_dict(printable_names, dbo_tree)
+
   
 # 3. Name entity
 df_ne <- copy(df)
@@ -97,10 +101,10 @@ if(use_ne){
     print("    Using dictionary/cache")
     types_dict <- load_dict(path_dict_ne, remove_URL)
   }
-  if(use_only_dict && path_dict_ne != ""){
-    ne_types_df <- annotate_dataframe_dict(df_ne, types_dict, dbo_only = T, use_ne_path2root = F, dbo_tree = dbo_tree, printable_names = get_printable_names, printable_names_df = printable_names)
+  if(use_only_dict & path_dict_ne != ""){
+    ne_types_df <- annotate_dataframe_dict(df_ne, types_dict, dbo_only = dbo_only, use_ne_path2root = use_ne_path2root, dbo_tree = dbo_tree, path_types_dic = path_types_dic,printable_names = use_printable_names, printable_names_df = printable_names)
   }else{
-    ne_types_df <- annotate_dataframe(df_ne, confidence_lvl, types_dict = types_dict, dbo_only = T, use_ne_path2root = F, dbo_tree = dbo_tree, printable_names = get_printable_names, printable_names_df = printable_names)
+    ne_types_df <- annotate_dataframe(df_ne, confidence_lvl, types_dict = types_dict, dbo_only = dbo_only, use_ne_path2root = use_ne_path2root, dbo_tree = dbo_tree, printable_names = use_printable_names, printable_names_df = printable_names)
   }
   
   df_ne <- merge(df_ne, ne_types_df, by="individual")
@@ -131,16 +135,17 @@ if(use_preprocessing){
 #print("4. Not using preprocessing before vectorization")
 #tdm <- process_dataframe(df_ne, stw_opt = FALSE, punct_remove = FALSE, lemm_opt = FALSE, stem_opt = FALSE, tfidf = use_tfidf, custom_sw =  "")
 tdm <- vectorizate_dataframe(df_ne, tfidf=use_tfidf)
+tdm <- dfm_replace(tdm, pattern = "Bias", replacement = "bias")
 
 # 5. Classifier
-
+rm(df, df_ne, ne_types_df, types_dict)
+#.rs.restartR()
 if(use_crossval){
   print("5. Build and train classifier with all the data")
   
   #model <- build_train_model(train_data = tdm, labels = tdm$type)
   print("6. Metrics with crossvalidation")
-  #metrics <- assess_model_cv(model, k = crossval_folds, verbose = TRUE, ont_tree = dbo_tree)
-  metrics <- assess_model_cv_tdm(tdm, k = crossval_folds, verbose = TRUE, ont_tree = dbo_tree)
+  metrics <- assess_model_cv_tdm(tdm, k = crossval_folds, verbose = TRUE, ont_tree = NULL, dict_paths = paths_types_dic)
   
   print(metrics)
 }else{
@@ -148,11 +153,17 @@ if(use_crossval){
   splitted_df <- split_data_trte(tdm, trte_split = train_percent)
   tr_tdm <- splitted_df[[1]]; te_tdm <- splitted_df[[2]]
   rm(splitted_df)
-  model <- build_train_model(train_data = tr_tdm, labels = tr_tdm$type)
+  gc()
+  #model <- build_train_model(train_data = tr_tdm, labels = tr_tdm$type)
+  model <- fit_linear_svc(x=tr_tdm, y=tr_tdm$type, weight="uniform")
+  rm(tr_tdm)
+  gc()
   predicted <- predict_abstracts(model, te_tdm)
+  
   # 6. metrics
   print("6. Metrics")
-  metrics <- evaluate_results(predicted, te_tdm, dbo_tree)
+  #metrics <- evaluate_results(predicted, te_tdm$type, dbo_tree)
+  metrics <- evaluate_results_dict(predicted, te_tdm$type, path_types_dic)
   print_measurements(metrics)
 }
 
@@ -162,20 +173,14 @@ end_t <- timestamp()
 
 print(start_t)
 print(end_t)
-print(end_t - start_t)
-####################################################################################################
-# Read both ttl files and store a sample of the merged files to do the developing with a smaller df
-####################################################################################################
 
-#df <- read_TTL_file("datasets/test_abstracts_long.ttl", c("individual","property","abstract", "dot"))
-#df <- read_merge_TTL_files("datasets/long_abstracts_en.ttl", "datasets/instance_types_en.ttl", c("individual","property","abstract", "dot"), c("individual","property","type", "dot"), "individual")
-#df <- get_sample_df(df, 0.0001)
-#df <- annotate_dataframe(df, 0.3)
-#write_csv_file("datasets/abstracts_types_annotated_short.csv", df)
-
-predict_new_text <- function(raw_text, model){
-  txt <- annotate_raw_text(raw_text, 0.3)
-  new_tdm <- process_text(test, custom_sw = c("@en", "\"@en"))
-  results <- predict(model, newdata = test1, type="class")
-  return(results)
-}
+#df$type <- as.character(df$type)
+#tipos <- list()
+#for (ty in df$type){
+#  tt <- path_types_dic[[ty]]
+#  if(is.null(tt)){
+#    tipos <- c(tipos, ty)
+#  }
+#}
+# RaceHorse -> HorseRace (NO, THEY ARE DIFFERENT)
+# Holiday
