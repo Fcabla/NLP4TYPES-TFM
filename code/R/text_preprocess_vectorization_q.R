@@ -49,13 +49,6 @@ vectorizate_dataframe <- function(df, tfidf=TRUE){
   tf$fit_transform(abstracts_list)
 }
 
-# ToDo: preprocess unseen data (Inference end user).
-process_text <- function(raw_text, stw_opt = TRUE, punct_remove = TRUE, stem_opt = TRUE, lemm_opt = FALSE, tfidf = TRUE, custom_sw = ""){
-  my_corpus <- corpus(raw_text)
-  tdm <- vectorizate_corpus(my_corpus, stw_opt, punct_remove, stem_opt, lemm_opt, tfidf, custom_sw)
-  return(tdm)
-}
-
 # Function to process a dataframe applying classical text preprocessing techniques
 # Transform the preprocessed text in to a term document matrix and returns it
 process_dataframe <- function(df, stw_opt = TRUE, punct_remove = TRUE, stem_opt = TRUE, lemm_opt = FALSE, tfidf = TRUE, custom_sw = ""){
@@ -90,6 +83,7 @@ vectorizate_corpus <- function(crps, stw_opt = TRUE, punct_remove = TRUE, stem_o
   return(tdm)
 }
 
+# NOT USED
 vectorizate_dataframe_t2v <- function(df){
   # http://text2vec.org/vectorization.html
   it_train = itoken(df$abstract, 

@@ -9,7 +9,7 @@ source("code/R/ontology_trees.R")
 library(data.table)
 
 # Read config parameters:
-source("code/R/ontology_trees.R")
+source("code/R/config.R")
 
 ##################
 # Start workflow #
@@ -17,18 +17,19 @@ source("code/R/ontology_trees.R")
 start_t <- timestamp()
 # 1. Read files
 print("1. Read Files:")
-df <- read_merge_TTL_files(abs_file_path, types_file_path, abs_col_names, typ_col_names, join_by)
+df <- read_merge_TTL_files(abs_file_path, types_file_path, abs_col_names, typ_col_names, join_by, remove_OWL_thing)
 print(paste("    Total num of samples: ", dim(df)[1]))
+
+if(use_sampled_df)
+  df <- get_sample_df(df, sample_percentage)
+print(paste("    Number of instances used in the current experiment: ", dim(df)[1]))
+
 if(remove_URL){
   print("    Removing URLs from resources/types")
   df <- remove_resources_url(df, c("individual", "type"))
   # RaceHorse not working!
   #df$type[df$type == "RaceHorse"] <- "HorseRace"
 }
-  
-if(use_sampled_df)
-  df <- get_sample_df(df, sample_percentage)
-print(paste("    Number of instances used in the current experiment: ", dim(df)[1]))
 
 # 2. Get ontology tree
 print("2. Retrieve ontology tree")
@@ -79,6 +80,8 @@ if(use_preprocessing){
   }
   df_ne <- preprocess_dataframe_abstracts(df_ne, stw_opt = use_stw, punct_remove = remove_punctuation, lemm_opt = use_lemm, stem_opt = use_stem, custom_sw =  custom_stw, language <- l)
   #tdm <- process_dataframe(df_ne, stw_opt = use_stw, punct_remove = remove_punctuation, lemm_opt = use_lemm, stem_opt = use_stem, tfidf = use_tfidf, custom_sw =  custom_stw)
+}else{
+  print("4. Not using preprocessing before vectorization")
 }
 #print("4. Not using preprocessing before vectorization")
 #tdm <- process_dataframe(df_ne, stw_opt = FALSE, punct_remove = FALSE, lemm_opt = FALSE, stem_opt = FALSE, tfidf = use_tfidf, custom_sw =  "")
@@ -86,7 +89,7 @@ tdm <- vectorizate_dataframe(df_ne, tfidf=use_tfidf)
 tdm <- dfm_replace(tdm, pattern = "Bias", replacement = "bias")
 
 # 5. Classifier
-rm(df, df_ne, ne_types_df, types_dict)
+#rm(df, df_ne, ne_types_df, types_dict)
 #.rs.restartR()
 if(use_crossval){
   print("5. Build and train classifier with all the data")
@@ -94,7 +97,7 @@ if(use_crossval){
   #model <- build_train_model(train_data = tdm, labels = tdm$type)
   print("6. Metrics with crossvalidation")
   metrics <- assess_model_cv_tdm(tdm, k = crossval_folds, verbose = TRUE, ont_tree = NULL, dict_paths = paths_types_dic)
-  
+  print(round(metrics,digits = 3))
   print(metrics)
 }else{
   print("5. Splitting the data, build and train classifier")
@@ -112,6 +115,7 @@ if(use_crossval){
   print("6. Metrics")
   #metrics <- evaluate_results(predicted, te_tdm$type, dbo_tree)
   metrics <- evaluate_results_dict(predicted, te_tdm$type, path_types_dic)
+  print(round(metrics,digits = 3))
   print_measurements(metrics)
 }
 

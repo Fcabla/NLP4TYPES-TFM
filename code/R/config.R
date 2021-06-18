@@ -14,7 +14,8 @@ join_by <- "individual"
 use_sampled_df <- TRUE
 remove_URL <- TRUE
 # 1 -> 3M, 0.33 -> 1M, 0.0033 -> 10k
-sample_percentage <- 0.33
+sample_percentage <- 1
+remove_OWL_thing <- TRUE
 
 # Ontology trees
 ont_url <- "http://mappings.dbpedia.org/server/ontology/dbpedia.owl"
@@ -31,7 +32,7 @@ path_dict_ne <- paste("datasets/", lang,"/types_dict_",lang,".csv",sep = "")
 use_only_dict <- TRUE  # To use if the dict contains every individual
 dbo_only <- TRUE
 use_ne_path2root <- TRUE
-use_printable_names <- TRUE
+use_printable_names <- FALSE
 
 # text preprocessing and vectorization
 use_preprocessing <- FALSE
@@ -48,12 +49,14 @@ use_crossval <- FALSE
 crossval_folds <- 5
 
 # Gold Standard evaluation
+use_new_GS <- TRUE
 GS1_path <- "datasets/goldstandard/GS1.nt"
 GS2_path <- "datasets/goldstandard/GS2.nt"
 GS3_path <- "datasets/goldstandard/GS3.nt"
-column_names <- c("individual","property","type", "dot")
+new_GS_path <- "datasets/goldstandard/new/instance_types_lhd_dbo_en.ttl"
+column_GS_names <- c("individual","property","type", "dot")
 #"models/model1m.rds","models/model10k.rds","models/model_full.rds"
-model_path <- "models/model10k.rds"
+model_path <- paste("models/",lang,"/model1m.rds",sep = "")
 
 # Testing
 test_text <- "Animalia is an illustrated children's book by Graeme Base. It was originally published in 1986, followed by a tenth anniversary edition in 1996, and a 25th anniversary edition in 2012. Over three million copies have been sold. A special numbered and signed anniversary edition was also published in 1996, with an embossed gold jacket."

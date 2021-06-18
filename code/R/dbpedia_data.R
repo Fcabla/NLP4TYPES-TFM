@@ -17,16 +17,23 @@ write_csv_file <- function(output_path, df){
 }
 
 # Read two TTL files and return a dataframe with the merged files
-read_merge_TTL_files <- function(path_file_abstracts, path_file_types, abstracts_col_names, types_col_names, join_col){
+read_merge_TTL_files <- function(path_file_abstracts, path_file_types, abstracts_col_names, types_col_names, join_col, remove_OWL_thing = TRUE){
   df_abstracts <- read_TTL_file(path_file_abstracts, abstracts_col_names)
+  print(paste("Instances of abstracts:",dim(df_abstracts)[1]))
   df_types <- read_TTL_file(path_file_types, types_col_names)
+  print(paste("Instances of types:",dim(df_types)[1]))
   df <- merge(df_abstracts, df_types, by=join_col)
-  df <- remove_owl_thing_rows(df)
+  print(paste("Instances of both files combined:", dim(df)[1]))
+  if(remove_OWL_thing){
+    df <- remove_owl_thing_rows(df)
+    print(paste("Instances of both files combined and no owl:Thing rows:", dim(df)[1]))
+  }
   return(df)
 }
 
 # Remove instances of a dataframe that contain owl#Thing as a type
 remove_owl_thing_rows <- function(df){
+  print("Removing rows with owl thing as type")
   # remove owl:thing instances here????
   df <- df[!grepl("<http://www.w3.org/2002/07/owl#Thing>",df$type),]
   return(df)
@@ -56,6 +63,7 @@ encode_df_types <- function(df, df_unique_types){
 remove_resources_url <- function(df, df_columns){
   for (cl in df_columns){
     df[[cl]] <- gsub("<http://dbpedia.org/(resource|ontology)/(.*)>", "\\2", df[[cl]])
+    df[[cl]] <- gsub("<http://www.w3.org/2002/07/owl#Thing>", "owl:Thing", df[[cl]])
     #<http:\/\/dbpedia\.org\/(resource|ontology)\/(.*)>
     # 1st group \\1 captures resource or ontology, 2nd group captures the type or individual
   }
