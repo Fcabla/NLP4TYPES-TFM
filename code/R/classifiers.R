@@ -32,7 +32,7 @@ build_train_model <- function(train_data, labels){
 # Function to predict the test/validation dataset
 predict_abstracts <- function(model, test){
   # Predict https://www.rdocumentation.org/packages/quanteda.textmodels/versions/0.9.3/topics/predict.textmodel_svm
-  library(LiblineaR)
+  #library(LiblineaR)
   predicted <- predict(model, newdata = test, type = "class")
   return(predicted)
 }
@@ -51,6 +51,8 @@ assess_model_cv_tdm <- function(train_data, k = 5, by_class = FALSE, verbose = F
   
   results <- data.frame(acc=double(k), hprec=double(k), hrec=double(k), hF=double(k), stringsAsFactors = F)
   
+  pb <- txtProgressBar(min = 0, max = k, style = 3)
+  
   # loop across folds and refit model, add to results list
   for (i in seq_len(k)) {
     tr <- dfm_subset(train_data, folds != i)
@@ -67,8 +69,9 @@ assess_model_cv_tdm <- function(train_data, k = 5, by_class = FALSE, verbose = F
     }
     
     results[i, ] <- metrics
+    setTxtProgressBar(pb, i)
   }
-  
+  close(pb)
   summ <- sapply(results, mean)
   
   # this may not be the "correct" way to do it - here it averages across
@@ -95,6 +98,11 @@ fit_linear_svc <- function(x, y, weight = c("uniform", "docfreq", "termfreq"), t
   weight <- match.arg(weight)
   x_train <- x
   y_train <- y
+  
+  if(dim(x)[1] > dim(x)[2]*10){
+    type = 2
+    print("Using type 2 since docs >> features")
+  }
   # exclude NA in training labels
   #x_train <- suppressWarnings(
   #  dfm_trim(x[!is.na(y), ], min_termfreq = .0000000001, termfreq_type = "prop")
@@ -116,7 +124,15 @@ fit_linear_svc <- function(x, y, weight = c("uniform", "docfreq", "termfreq"), t
   }
   gc()
   x_temp <- as(x_train, "RsparseMatrix")
-  svmlinfitted <- LiblineaR::LiblineaR(x_temp, target = y_train, wi = wi, type = type, verbose = verbose)
+  tol = 0.1
+  if(type == 1){
+    tol = 0.0001
+  }
+  if(type == 2){
+    tol = 0.0001
+    # tol = 0.01
+  }
+  svmlinfitted <- LiblineaR::LiblineaR(x_temp, target = y_train, epsilon = tol, wi = wi, type = type, verbose = verbose)
   rm(x_temp)
   gc()
   colnames(svmlinfitted$W)[seq_along(featnames(x_train))] <- featnames(x_train)
