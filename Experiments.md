@@ -62,7 +62,11 @@ Gold standard evaluation (reproduced)
 | hSVM      | 0.548 | 0.890 | 0.665 | 0.761 |
 | SDType    | 0.338 | 0.809 | 0.641 | 0.715 |
 
+<<<<<<< HEAD
 ------
+=======
+*********************************************
+>>>>>>> c35cde13cca70f1ec01462201757885fc8608b8b
 Testing of new possible upgrades with 1Million instances:
 	- printable names = SoccerPlayer -> Soccer Player
 	- path2root = SoccerPlayer -> owl:Thing, Agent, Person, Athlete, SoccerPlayer
@@ -75,8 +79,13 @@ Testing of new possible upgrades with 1Million instances:
 | -               | +         | 0.879 | 0.957 | 0.959 | 0.958 |
 | +               | +         | 0.869 | 0.953 | 0.956 | 0.955 |
 
+<<<<<<< HEAD
 ------
 ------
+=======
+*********************************************
+*********************************************
+>>>>>>> c35cde13cca70f1ec01462201757885fc8608b8b
 Test with spanish data:
 There are in total 785750 instances, we are going to try with the 100%, 33% (259297) and 0.33% of the total data (like english).
 
@@ -107,6 +116,10 @@ There are in total 785750 instances, we are going to try with the 100%, 33% (259
 | +               | +         | 0.915 | 0.971 | 0.973 | 0.972 |
 
 There is no gold standard dataset in Spanish so there is no testing with that.
+<<<<<<< HEAD
 ------
+=======
+*********************************************
+>>>>>>> c35cde13cca70f1ec01462201757885fc8608b8b
 (146 unique classes on the spanish dbpedia dataset vs 405 unique classes on the english dbpedia dataset)
 Despite having less data, the Spanish version performs better than the English version. It is believed that this is due to the number of possible classes in both datasets. 

@@ -31,7 +31,11 @@ service_url <- DBPEDIA_PATH <- "http://localhost:2222/rest/annotate"
 path_dict_ne <- paste("datasets/", lang,"/types_dict_",lang,".csv",sep = "")
 use_only_dict <- TRUE  # To use if the dict contains every individual
 dbo_only <- TRUE
+<<<<<<< HEAD
 use_ne_path2root <- FALSE
+=======
+use_ne_path2root <- TRUE
+>>>>>>> c35cde13cca70f1ec01462201757885fc8608b8b
 use_printable_names <- FALSE
 
 # text preprocessing and vectorization
