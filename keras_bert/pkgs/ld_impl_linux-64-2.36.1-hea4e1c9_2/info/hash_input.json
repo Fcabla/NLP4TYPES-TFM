@@ -1,9 +1,0 @@
-{
-  "c_compiler_version": "9",
-  "ctng_cpu_arch": "x86_64",
-  "channel_targets": "conda-forge main",
-  "target_platform": "linux-64",
-  "ctng_vendor": "conda_cos6",
-  "c_compiler": "gcc",
-  "ctng_target_platform": "linux-64"
-}
