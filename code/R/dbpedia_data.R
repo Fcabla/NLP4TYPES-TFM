@@ -1,5 +1,5 @@
 library(readr)
-setwd("/home/fcabla/Documentos/UPM/TFM")
+#setwd("/home/fcabla/Documentos/UPM/TFM")
 
 # Read a TTL file (using read_delim) and return a dataframe
 read_TTL_file <- function(path_file, column_names){
@@ -28,6 +28,8 @@ read_merge_TTL_files <- function(path_file_abstracts, path_file_types, abstracts
     df <- remove_owl_thing_rows(df)
     print(paste("Instances of both files combined and no owl:Thing rows:", dim(df)[1]))
   }
+  unique_df <- get_unique_types(df)
+  print(paste("Number of unique classes: ", dim(unique_df)))
   return(df)
 }
 

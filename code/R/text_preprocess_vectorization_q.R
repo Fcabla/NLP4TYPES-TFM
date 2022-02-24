@@ -1,25 +1,37 @@
 library(quanteda)
 library(udpipe)
-library(text2vec)
+library(lexicon)
+#library(textstem)
 #https://quanteda.io/reference/convert.html
+#python version of idf:
+# https://github.com/scikit-learn/scikit-learn/blob/844b4be24/sklearn/feature_extraction/text.py#L1700
 
-preprocess_dataframe_abstracts <- function(df, stw_opt = TRUE, punct_remove = TRUE, stem_opt = TRUE, lemm_opt = FALSE, custom_sw = "", language = "english"){
+preprocess_dataframe_abstracts <- function(df, stw_opt = TRUE, punct_remove = TRUE, stem_opt = TRUE, lemm_opt = FALSE, custom_sw = "", language = "english", use_low=TRUE){
   df$abstract <- as.character(df$abstract)
   my_corpus <- corpus(df, text_field = "abstract", docid_field = "individual")
-  txt_tokens <- tokens(x = my_corpus, remove_punct = punct_remove, include_docvars = TRUE)
-  txt_tokens <- tokens_tolower(x = txt_tokens)
+  txt_tokens <- quanteda::tokens(x = my_corpus, remove_punct = punct_remove, include_docvars = TRUE)
+  
+  if(use_low){
+    print('    Lowercasing abstracts')
+    txt_tokens <- tokens_tolower(x = txt_tokens)
+  }
   
   if(stw_opt){
+    print('    Removing Stopwords')
     txt_tokens <- tokens_select(x = txt_tokens, pattern = c(stopwords(language), custom_sw), selection = "remove")
   }
   
   if(lemm_opt){
+    print('    Applying lematization')
     # https://www.r-bloggers.com/2018/09/udpipe-version-0-7-for-natural-language-processing-nlp-alongside-tidytext-quanteda-tm/
-    lemm_tokens <- udpipe(x=as.list(txt_tokens), language)
-    txt_tokens <- tokens_replace(txt_tokens, lemm_tokens$token, lemm_tokens$lemma)
+    #lemm_tokens <- udpipe(x=as.list(txt_tokens), language)
+    #txt_tokens <- tokens_replace(txt_tokens, lemm_tokens$token, lemm_tokens$lemma)
+    #txt_tokens <- lemmatize_words(txt_tokens)
+    txt_tokens <- tokens_replace(txt_tokens, pattern = lexicon::hash_lemmas$token, replacement = lexicon::hash_lemmas$lemma)
   }
   
   if(stem_opt){
+    print('    Applying stemming')
     txt_tokens <- tokens_wordstem(x = txt_tokens, language = language)
   }
   
@@ -27,16 +39,23 @@ preprocess_dataframe_abstracts <- function(df, stw_opt = TRUE, punct_remove = TR
   f <- function(x){
     paste(unlist(x), collapse = ' ')
   }
-  
+  print('    rebuilding abstracts¨')
   df$abstract <- sapply(txt_tokens, f)
   return(df)
 }
 
-vectorizate_dataframe <- function(df, tfidf=TRUE){
+vectorizate_dataframe <- function(df, tfidf=TRUE, trim_tdm, min_term, min_doc){
   df$abstract <- as.character(df$abstract)
   my_corpus <- corpus(df, text_field = "abstract", docid_field = "individual")
   tdm <- dfm(my_corpus, tolower=FALSE)
-  #tdm <- dfm_trim(tdm, sparsity = 0.96, verbose = TRUE)
+  if(trim_tdm){
+    #tdm <- dfm_trim(tdm, sparsity = 0.96, verbose = TRUE)
+    print(paste("trimming the tdm with min_term", min_term, " and min_doc", min_doc, sep = " "))
+    print(dim(tdm))
+    tdm <- dfm_trim(tdm, min_termfreq = min_term, min_docfreq = min_doc, termfreq_type = "quantile")
+    print(dim(tdm))
+  }
+
   if(tfidf){
     tdm <- dfm_tfidf(tdm)
   }
@@ -45,8 +64,35 @@ vectorizate_dataframe <- function(df, tfidf=TRUE){
   
   #tf <- TfIdfVectorizer$new(min_df= 1, max_df = 1, max_features = 0,ngram_range = c(1, 1), regex = , remove_stopwords = , split = ,lowercase = 
   #                            ,smooth_idf = ,norm = )
-  tf <- TfIdfVectorizer$new(min_df= 1, max_df = 1, ngram_range = c(1, 1), split =" " ,lowercase = T, smooth_idf = T, norm = T)
-  tf$fit_transform(abstracts_list)
+  #tf <- TfIdfVectorizer$new(min_df= 1, max_df = 1, ngram_range = c(1, 1), split =" " ,lowercase = T, smooth_idf = T, norm = T)
+  #tf$fit_transform(abstracts_list)
+}
+
+vectorizate_dataframe_ngrams <- function(df, tfidf=TRUE, ngrams=2, trim_tdm, min_term, min_doc){
+  df$abstract <- as.character(df$abstract)
+  my_corpus <- corpus(df, text_field = "abstract", docid_field = "individual")
+  my_corpus <- tokens(my_corpus)
+  my_corpus <- tokens_ngrams(my_corpus, n=ngrams)
+  tdm <- dfm(my_corpus, tolower=FALSE)
+  
+  if(trim_tdm){
+    #tdm <- dfm_trim(tdm, sparsity = 0.96, verbose = TRUE)
+    print(paste("trimming the tdm with min_term", min_term, " and min_doc", min_doc, sep = " "))
+    print(tdm)
+    tdm <- dfm_trim(tdm, min_termfreq = min_term, min_docfreq = min_doc)
+    print(tdm)
+  }
+  
+  if(tfidf){
+    tdm <- dfm_tfidf(tdm)
+  }
+  
+  return(tdm)
+  
+  #tf <- TfIdfVectorizer$new(min_df= 1, max_df = 1, max_features = 0,ngram_range = c(1, 1), regex = , remove_stopwords = , split = ,lowercase = 
+  #                            ,smooth_idf = ,norm = )
+  #tf <- TfIdfVectorizer$new(min_df= 1, max_df = 1, ngram_range = c(1, 1), split =" " ,lowercase = T, smooth_idf = T, norm = T)
+  #tf$fit_transform(abstracts_list)
 }
 
 # Function to process a dataframe applying classical text preprocessing techniques
@@ -83,31 +129,26 @@ vectorizate_corpus <- function(crps, stw_opt = TRUE, punct_remove = TRUE, stem_o
   return(tdm)
 }
 
-# NOT USED
-vectorizate_dataframe_t2v <- function(df){
-  # http://text2vec.org/vectorization.html
-  it_train = itoken(df$abstract, 
-                    preprocessor = tolower, 
-                    tokenizer = word_tokenizer, 
-                    ids = df$individual, 
-                    progressbar = T)
-  vocab = create_vocabulary(it_train)
+vectorizate_new_unseen_data <- function(x, new_df){
+  #gold standard df to dfm
+  new_df$abstract <- as.character(new_df$abstract)
+  my_corpus <- corpus(new_df, text_field = "abstract", docid_field = "individual")
+  my_corpus <- tokens(my_corpus)
+  # tf part
+  tdm <- dfm(my_corpus, tolower=FALSE)
+  tdm <- dfm_weight(tdm, scheme = "count")
+  # match feature names with the model before weighting!
+  tdm <- dfm_match(tdm, featnames(x))
   
-  vectorizer = vocab_vectorizer(vocab)
-  dtm_train = create_dtm(it_train, vectorizer)
-  
-  #dtm_train_l2_norm = normalize(dtm_train, "l2")
-  
-  # define tfidf model
-  tfidf = TfIdf$new(smooth_idf = T, norm = "l2")
-  # fit model to train data and transform train data with fitted model
-  dtm_train_tfidf = fit_transform(dtm_train, tfidf)
-  # tfidf modified by fit_transform() call!
-  # apply pre-trained tf-idf transformation to test data
-  #dtm_test_tfidf = create_dtm(it_test, vectorizer)
-  #dtm_test_tfidf = transform(dtm_test_tfidf, tfidf)
-  
-  return(dtm_train_tfidf)
-  #tf = TfIdfVectorizer$new(min_df = 1,max_df = 1.0,ngram_range = c(1, 1),split = " ",lowercase = T,smooth_idf = T,norm = T)
-  #tf$fit_transform(abstracts_list)
+  # idf part
+  document_frequency = docfreq(x, scheme = "inverse")
+  #there are features in x (models tdm) that have 0 doc freq, prob bcause they appeare few times ??
+  # https://github.com/quanteda/quanteda/blob/master/R/dfm_weight.R
+  # https://quanteda.io/reference/dfm_tfidf.html
+  document_frequency[document_frequency == Inf] = 0
+  j <- as(tdm, "dgTMatrix")@j + 1L
+  tdm@x <- tdm@x * document_frequency[j]
+  attrs <- attributes(tdm)
+  tdm <- quanteda:::rebuild_dfm(tdm, attrs)
+  return(tdm)
 }

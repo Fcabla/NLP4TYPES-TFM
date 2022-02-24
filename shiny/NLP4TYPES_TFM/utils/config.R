@@ -32,5 +32,7 @@ use_tfidf <- FALSE  # TFIDF IS A NO SENSE WITH 1 DOCUMENT.
 #Either we recover the frequency of the previous features and the unweighted matrix to re-weight every run or we just use TF
 
 # Unseen pred
-model_path <- paste("models/",lang,"/model10k.rds",sep = "")
+#model_path <- paste("models/",lang,"/model10k.rds",sep = "")
+model_path_en <- "models/en/model10k.rds"
+model_path_es <- "models/es/model3k.RDS"
 test_text <- "Animalia is an illustrated children's book by Graeme Base. It was originally published in 1986, followed by a tenth anniversary edition in 1996, and a 25th anniversary edition in 2012. Over three million copies have been sold. A special numbered and signed anniversary edition was also published in 1996, with an embossed gold jacket."
