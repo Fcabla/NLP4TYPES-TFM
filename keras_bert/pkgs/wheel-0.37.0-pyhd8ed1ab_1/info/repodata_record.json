@@ -1,0 +1,24 @@
+{
+  "build": "pyhd8ed1ab_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "python !=3.0,!=3.1,!=3.2,!=3.3,!=3.4"
+  ],
+  "features": "",
+  "fn": "wheel-0.37.0-pyhd8ed1ab_1.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "3aa2c3e25dd361b453d010388b9cdff1",
+  "name": "wheel",
+  "noarch": "python",
+  "package_type": "noarch_python",
+  "sha256": "5751e87191736ac8572030905f012eb1d099e36e9c0ad6556a1ad6672e42ece9",
+  "size": 31651,
+  "subdir": "noarch",
+  "timestamp": 1628881400917,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/wheel-0.37.0-pyhd8ed1ab_1.tar.bz2",
+  "version": "0.37.0"
+}

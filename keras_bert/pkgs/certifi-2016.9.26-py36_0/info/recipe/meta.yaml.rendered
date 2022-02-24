@@ -1,0 +1,34 @@
+# This file created by conda-build 1.21.14+0.g4dfebe9.dirty
+# meta.yaml template originally from:
+# /recipe_root, last modified Tue Dec 27 17:00:29 2016
+# ------------------------------------------------
+
+package:
+    name: certifi
+    version: 2016.9.26
+source:
+    fn: certifi-2016.9.26.tar.gz
+    sha256: 8275aef1bbeaf05c53715bfc5d8569bd1e04ca1e8e69608cc52bcaac2604eb19
+    url: https://pypi.io/packages/source/c/certifi/certifi-2016.9.26.tar.gz
+build:
+    number: '0'
+    script: python setup.py install
+requirements:
+    build:
+        - python
+    run:
+        - python
+test:
+    imports:
+        - certifi
+about:
+    home: http://certifi.io/
+    license: ISC
+    license_file: LICENSE
+    summary: Python package for providing Mozilla's CA Bundle.
+extra:
+    recipe-maintainers:
+        - jakirkham
+        - pelson
+        - sigmavirus24
+        - ocefpaf

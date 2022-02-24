@@ -1,0 +1,237 @@
+commit 2afddf7cdfec475add73ad86224c27f81db61ba0
+Merge: ced62a4 cd111c4
+Author: Paul Yim <pseudoyim@users.noreply.github.com>
+Date:   Mon Oct 25 07:40:54 2021 -1000
+
+    Merge pull request #7 from AnacondaRecipes/update_2021e
+    
+    Update to v2021e
+
+commit cd111c4f6aa036b695e9827219a036b0ba12e3f4
+Author: Paul Yim <paul.j.yim@gmail.com>
+Date:   Mon Oct 25 09:56:48 2021 -0400
+
+    Update to v2021e
+
+commit ced62a4c0d35ac95ec2dde8e3366c8dc2fb848bc
+Merge: 1c96c2a a4c3cce
+Author: Paul Yim <pseudoyim@users.noreply.github.com>
+Date:   Fri Oct 22 04:22:49 2021 -1000
+
+    Merge pull request #5 from AnacondaRecipes/pjy_update_v2021d
+    
+    Update to v2021d
+
+commit a4c3cced4bea517052d476606a44c97ee17d53dd
+Author: Paul Yim <paul.j.yim@gmail.com>
+Date:   Wed Oct 20 14:36:39 2021 -0400
+
+    Update test for OSX
+
+commit bd21b762229427e6c8727b431931e0eb88efc0e0
+Author: Paul Yim <paul.j.yim@gmail.com>
+Date:   Wed Oct 20 13:34:18 2021 -0400
+
+    Fix license info
+
+commit 70bd0110b58a8b77310595c280faf384b4ca4758
+Author: Paul Yim <paul.j.yim@gmail.com>
+Date:   Wed Oct 20 13:32:11 2021 -0400
+
+    Update to v2021d
+
+commit 1c96c2adf6855668a709910be1b8fa18d23e95ee
+Merge: a541f25 870e643
+Author: Serhii Kupriienko <79282962+skupr-anaconda@users.noreply.github.com>
+Date:   Wed Jun 23 12:34:28 2021 +0300
+
+    Merge pull request #1 from AnacondaRecipes/update_to_v2021a
+    
+    Update to v2021a and fix license
+
+commit 870e6432dfceaab1c2a9256338c68226b1ca026f
+Author: Serhii Kupriienko <skupriienko@anaconda.com>
+Date:   Fri Jun 18 10:41:10 2021 +0300
+
+    Update to v2021a and fix license
+
+commit a541f25a2ebbbd9793086633551b4e703ce475bd
+Merge: 57afe95 f7ff3c4
+Author: Connor Martin <connormartin7@gmail.com>
+Date:   Tue Jan 19 14:06:35 2021 -0600
+
+    fix merge conflicts
+
+commit 57afe95ddcb33c8fe00cfe54be8f4cd53049a476
+Author: Connor Martin <connormartin7@gmail.com>
+Date:   Thu Oct 8 14:36:14 2020 -0500
+
+    make diff
+
+commit 249c9895b2e0efaef4771ff3d7e8a9ecf8685d71
+Merge: f1354ff 951e80a
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Wed Dec 30 15:17:20 2020 +0000
+
+    v2020f
+    
+    automerged PR by conda-forge/automerge-action
+
+commit 951e80a1582c23f3940a40d6ad5e22ef9fc680a3
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Wed Dec 30 12:11:01 2020 -0300
+
+    update to v2020f
+
+commit b61c209564a1602b2d145f9eb95c98da83dbc6c5
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Wed Dec 30 11:58:11 2020 -0300
+
+    MNT: Re-rendered with conda-build 3.20.5, conda-smithy 3.8.6, and conda-forge-pinning 2020.12.29.19.35.25
+
+commit f1354ffce0f9edff67e6e76778383a2a3dd4ee8b
+Merge: 43a3776 4dfc1a0
+Author: Filipe <ocefpaf@gmail.com>
+Date:   Sat Dec 26 10:50:03 2020 -0300
+
+    Merge pull request #6 from ocefpaf/v2020e
+
+commit 4dfc1a040aa9258573f2437858547127691d1539
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Sat Dec 26 10:37:18 2020 -0300
+
+    MNT: Re-rendered with conda-build 3.20.5, conda-smithy 3.8.5, and conda-forge-pinning 2020.12.26.13.11.41
+
+commit ace76905c7712a0421e6355722ad666eeb70156d
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Sat Dec 26 10:36:35 2020 -0300
+
+    update to v2020e
+
+commit f7ff3c496c8b2e55f9ece935119be4cf7d100dcd
+Author: Ray Donnelly <mingw.android@gmail.com>
+Date:   Thu Oct 29 12:25:14 2020 +0100
+
+    Update to 2020d
+
+commit 43a37761aa356dbcfcddd5107ac4ce1c6b61d03f
+Merge: e65284c a6c6be3
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Thu Oct 22 21:47:13 2020 +0000
+
+    V2020d
+    
+    automerged PR by conda-forge/automerge-action
+
+commit a6c6be3955b780caddbdbd823bcece0c091ba82c
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Thu Oct 22 18:42:12 2020 -0300
+
+    2020d
+
+commit 3d8f540a5e422af1bbdf8ad1fedb299fed3a7f5a
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Thu Oct 22 18:42:04 2020 -0300
+
+    MNT: Re-rendered with conda-build 3.20.4, conda-smithy 3.8.2, and conda-forge-pinning 2020.10.22.15.42.41
+
+commit 74a12eb4368a42b4580bcc71dfe1731c55598042
+Author: Connor Martin <connormartin7@gmail.com>
+Date:   Thu Oct 8 14:36:14 2020 -0500
+
+    make diff
+
+commit e65284cdfbfc54d7c20e2ae6b8cacd1a58b4cfb3
+Merge: 088b87d 14f87d1
+Author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+Date:   Wed Oct 21 00:28:21 2020 +0000
+
+    2020c
+    
+    automerged PR by conda-forge/automerge-action
+
+commit 14f87d1aab9701170a572f20e0f0903fd902a879
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Tue Oct 20 21:23:44 2020 -0300
+
+    2020c
+
+commit 088b87d6f145620dfde6bd7d6c5aca404d2ad060
+Merge: 2c0fd2b 62c8885
+Author: Filipe <ocefpaf@gmail.com>
+Date:   Wed Oct 7 19:17:29 2020 -0300
+
+    Merge pull request #2 from ocefpaf/2020b
+
+commit 62c888501e1141abb53a9d7a03a534167669d9c3
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Wed Oct 7 17:35:49 2020 -0300
+
+    lint
+
+commit a1134b1b15d866154a477d0507e2cd9c132a935b
+Author: Filipe Fernandes <ocefpaf@gmail.com>
+Date:   Wed Oct 7 17:33:40 2020 -0300
+
+    update 2020b
+
+commit 2c0fd2b2fcaf1996a30c9f8537577b6904140778
+Merge: d0a36b1 d930b2e
+Author: Filipe <ocefpaf@gmail.com>
+Date:   Tue Oct 6 18:53:50 2020 -0300
+
+    Merge pull request #1 from mbargull-feedstocks/change-to-upstream-tzdata
+
+commit d930b2edcbf61fa1d01c9732fd0d0fb84724bf25
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 18:34:42 2020 +0200
+
+    Use upstream install target + manual copying
+
+commit e1778c8ffd150dd35ed16b4af89c96c50a0c00fc
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 18:16:31 2020 +0200
+
+    Build "fat" versions for compatibility
+
+commit 420f53bd8697d3680dfb82fe3a40f73bc5b3b298
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 17:45:30 2020 +0200
+
+    Add comment on why we don't skip on non-Linux
+
+commit 014ebe912268135b85e721de068b4425d636f7bc
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 17:12:57 2020 +0200
+
+    Add leapseconds, *.tab, and zic input files
+
+commit fe36ef253a941e24b08a14746941c255f52eebaa
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 17:12:40 2020 +0200
+
+    MNT: Re-rendered with conda-build 3.20.3, conda-smithy 3.7.10, and conda-forge-pinning 2020.10.06.07.41.18
+
+commit 347187b9a50818e1725e02472222be5d90e3b975
+Author: Marcel Bargull <marcel.bargull@udo.edu>
+Date:   Tue Oct 6 17:12:22 2020 +0200
+
+    Change feedstock to package upstream tzdata
+
+commit d0a36b1f7a6b3111b71f73c61e12a579bb8c28ca
+Author: conda-forge-admin <conda-forge-admin@email.com>
+Date:   Sun Aug 9 11:05:12 2020 +0000
+
+    [ci skip] [skip ci] [cf admin skip] ***NO_CI*** admin migration CFEP13TokenCleanup
+
+commit 9b4d6183e782f9b480aade565122f256734cea50
+Author: Travis-CI on github.com/conda-forge/staged-recipes <conda-forge@googlegroups.com>
+Date:   Tue Jun 2 17:56:24 2020 +0000
+
+    Re-render the feedstock after CI registration.
+
+commit f07f5776b58515c09bd343032a69079c18a5922c
+Author: Travis-CI on github.com/conda-forge/staged-recipes <conda-forge@googlegroups.com>
+Date:   Tue Jun 2 17:37:44 2020 +0000
+
+    Initial feedstock commit with conda-smithy 3.7.3.

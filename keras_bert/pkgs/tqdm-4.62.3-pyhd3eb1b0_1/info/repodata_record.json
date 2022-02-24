@@ -1,0 +1,25 @@
+{
+  "build": "pyhd3eb1b0_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+  "constrains": [],
+  "depends": [
+    "python >=2.7"
+  ],
+  "features": "",
+  "fn": "tqdm-4.62.3-pyhd3eb1b0_1.conda",
+  "legacy_bz2_md5": "fbc726ba10bb7014439269c66f2747ee",
+  "license": "MPL-2.0 AND MIT",
+  "license_family": "MOZILLA",
+  "md5": "5661152efd84b194997e475d1bc438a0",
+  "name": "tqdm",
+  "noarch": "python",
+  "package_type": "noarch_python",
+  "sha256": "a3de1dbeda07b6eaeecf2e2ac32dfe105bdb768e7faccb2f8202f14e34da6f4a",
+  "size": 85119,
+  "subdir": "noarch",
+  "timestamp": 1635330873606,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/noarch/tqdm-4.62.3-pyhd3eb1b0_1.conda",
+  "version": "4.62.3"
+}

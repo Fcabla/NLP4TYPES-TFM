@@ -1,0 +1,60 @@
+{% set name = "requests" %}
+{% set version = "2.26.0" %}
+
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/requests-{{ version }}.tar.gz
+  sha256: b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7
+
+build:
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python >=3.6
+    - pip
+  run:
+    - python >=3.6
+    - certifi >=2017.4.17
+    # no longer required, but optional: https://github.com/psf/requests/pull/5797
+    # - chardet >=3.0.2,<5
+    - charset-normalizer >=2.0.0,<2.1.0
+    - idna >=2.5,<4
+    - urllib3 >=1.21.1,<1.27
+
+test:
+  requires:
+    - pip
+  commands:
+    - pip check
+  imports:
+    - requests
+
+about:
+  home: http://python-requests.org
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Requests is an elegant and simple HTTP library for Python, built with ♥.
+  description: |
+    Requests is the only Non-GMO HTTP library for Python, safe for human
+    consumption.
+  doc_url: http://docs.python-requests.org/
+  dev_url: https://github.com/psf/requests
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - kalefranz
+    - mcg1969
+    - mingwandroid
+    - msarahan
+    - pelson
+    - sigmavirus24
+    - ocefpaf
+    - carlodri

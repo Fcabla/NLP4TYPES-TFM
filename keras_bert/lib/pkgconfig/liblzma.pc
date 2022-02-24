@@ -1,0 +1,19 @@
+#
+# Author: Lasse Collin
+#
+# This file has been put into the public domain.
+# You can do whatever you want with this file.
+#
+
+prefix=/home/fcabla/Documentos/UPM/TFM/keras_bert
+exec_prefix=/home/fcabla/Documentos/UPM/TFM/keras_bert
+libdir=/home/fcabla/Documentos/UPM/TFM/keras_bert/lib
+includedir=/home/fcabla/Documentos/UPM/TFM/keras_bert/include
+
+Name: liblzma
+Description: General purpose data compression library
+URL: https://tukaani.org/xz/
+Version: 5.2.5
+Cflags: -I${includedir}
+Libs: -L${libdir} -llzma
+Libs.private: -pthread -lrt  -lpthread

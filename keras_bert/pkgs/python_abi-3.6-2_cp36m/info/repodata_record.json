@@ -1,0 +1,26 @@
+{
+  "arch": "x86_64",
+  "build": "2_cp36m",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [
+    "pypy <0a0"
+  ],
+  "depends": [
+    "python 3.6.*"
+  ],
+  "features": "",
+  "fn": "python_abi-3.6-2_cp36m.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "6f5b92d833a339da29ad8578c2a648ad",
+  "name": "python_abi",
+  "platform": "linux",
+  "sha256": "0572137e715cfc699fc5a771ae81ae797b271a3fc4ca02fdcaff634fe2a03789",
+  "size": 4011,
+  "subdir": "linux-64",
+  "timestamp": 1624472037720,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/python_abi-3.6-2_cp36m.tar.bz2",
+  "version": "3.6"
+}

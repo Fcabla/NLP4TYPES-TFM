@@ -1,0 +1,18 @@
+{
+  "arch": "x86_64",
+  "build": "2_cp36m",
+  "build_number": 2,
+  "constrains": [
+    "pypy <0a0"
+  ],
+  "depends": [
+    "python 3.6.*"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "name": "python_abi",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1624472037720,
+  "version": "3.6"
+}
