@@ -24,7 +24,7 @@ split_data_trte <- function(tdm, trte_split = 0.75){
 # Build the svm model with quanteda
 build_train_model <- function(train_data, labels){
   # Building the model
-  tmod <- textmodel_svm(train_data, y = labels, weight = "uniform", verbose=TRUE)
+  tmod <- textmodel_svm(train_data, y = labels, weight = "uniform", verbose=FALSE)
   #, type=2
   return(tmod)
 }
@@ -93,12 +93,13 @@ assess_model_cv_tdm <- function(train_data, k = 5, by_class = FALSE, verbose = F
 fit_linear_svc <- function(x, y, weight = c("uniform", "docfreq", "termfreq"), type = 1, verbose=FALSE){
   
   x <- as.dfm(x)
-  if (!sum(x)) stop(message_error("dfm_empty"))
+  if (!sum(x)) stop("dfm_empty")
   call <- match.call()
   weight <- match.arg(weight)
   x_train <- x
   y_train <- y
   
+  print(dim(x))
   if(dim(x)[1] > dim(x)[2]*10){
     type = 2
     print("Using type 2 since docs >> features")

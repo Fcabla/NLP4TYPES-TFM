@@ -1,0 +1,50 @@
+{% set version = "21.3.1" %}
+
+package:
+  name: pip
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/p/pip/pip-{{ version }}.tar.gz
+  sha256: fd11ba3d0fdb4c07fbc5ecbba0b1b719809420f25038f8ee3cd913d3faa3033a
+
+build:
+  noarch: python
+  number: 0
+  disable_pip: true
+  entry_points:
+    - pip = pip._internal.cli.main:main
+    - pip3 = pip._internal.cli.main:main
+
+requirements:
+  host:
+    - python >=3.6
+    - setuptools
+  run:
+    - python >=3.6
+    - setuptools
+    - wheel
+
+test:
+  commands:
+    - pip -h
+    - pip list
+  imports:
+    - pip
+
+about:
+  home: https://pip.pypa.io/en/stable/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: PyPA recommended tool for installing Python packages
+  doc_url: https://pip.pypa.io/en/stable/
+  dev_url: https://github.com/pypa/pip
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - msarahan
+    - pelson
+    - ocefpaf
+    - mingwandroid

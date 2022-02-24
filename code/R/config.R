@@ -2,7 +2,7 @@
 # Config parameters #
 #####################
 # en or es
-lang <- "es"
+lang <- "en"
 print(paste("Using language:",lang,", please check the paths and services are according to the lang selected"))
 
 # Files location and column names
@@ -14,7 +14,7 @@ join_by <- "individual"
 use_sampled_df <- TRUE
 remove_URL <- TRUE
 # 1 -> 3M, 0.33 -> 1M, 0.0033 -> 10k
-sample_percentage <- 1
+sample_percentage <- 0.33
 remove_OWL_thing <- TRUE
 
 # Ontology trees
@@ -31,29 +31,38 @@ service_url <- DBPEDIA_PATH <- "http://localhost:2222/rest/annotate"
 path_dict_ne <- paste("datasets/", lang,"/types_dict_",lang,".csv",sep = "")
 use_only_dict <- TRUE  # To use if the dict contains every individual
 dbo_only <- TRUE
-<<<<<<< HEAD
 use_ne_path2root <- FALSE
-=======
-use_ne_path2root <- TRUE
->>>>>>> c35cde13cca70f1ec01462201757885fc8608b8b
 use_printable_names <- FALSE
 
 # text preprocessing and vectorization
 use_preprocessing <- FALSE
-use_stw <-TRUE
+use_stw <-FALSE
 custom_stw <- c("@en", "\"@en", "@es", "\"@es")
-use_stem <- TRUE
+use_stem <- FALSE
 use_lemm <- FALSE  
 remove_punctuation <- FALSE # Check if original does it
+use_lower <- TRUE
+
+#vect
 use_tfidf <- TRUE
+use_ngrams <- FALSE
+ngrams <- 1
+trim_tdm <- FALSE
+min_term <- 0.95
+min_doc <- 0.1
 
 # Classification
 train_percent <- 0.8
 use_crossval <- FALSE
 crossval_folds <- 5
+save_model <- FALSE
+save_model_path <- paste("models/",lang,"/model",sample_percentage,".rds",sep = "")
+
+# Fasttext
+use_temp_files = TRUE
 
 # Gold Standard evaluation
-use_new_GS <- TRUE
+use_new_GS <- FALSE
 GS1_path <- "datasets/goldstandard/GS1.nt"
 GS2_path <- "datasets/goldstandard/GS2.nt"
 GS3_path <- "datasets/goldstandard/GS3.nt"

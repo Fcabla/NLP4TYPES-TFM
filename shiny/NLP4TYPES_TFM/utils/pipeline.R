@@ -1,5 +1,6 @@
 library(quanteda)
-library(udpipe)
+#library(udpipe)
+library(lexicon)
 library(text2vec)
 library(httr)
 library(jsonlite)
@@ -55,13 +56,18 @@ preprocess_unseen_text <- function(unseen_text, stw_opt = TRUE, punct_remove = T
   unseen_text = as.character(unseen_text)
   #my_corpus <- corpus(unseen_text)
   txt_tokens <- tokens(x = unseen_text, remove_punct = punct_remove)
-  txt_tokens <- tokens_tolower(x = txt_tokens)
+  use_low = FALSE
+  if(use_low){
+    print('Lowercasing abstracts')
+    txt_tokens <- tokens_tolower(x = txt_tokens)
+  }
   if(stw_opt){
     txt_tokens <- tokens_select(x = txt_tokens, pattern = c(stopwords(language), custom_sw), selection = "remove")
   }
   if(lemm_opt){
-    lemm_tokens <- udpipe(x=as.list(txt_tokens), language)
-    txt_tokens <- tokens_replace(txt_tokens, lemm_tokens$token, lemm_tokens$lemma)
+    #lemm_tokens <- udpipe(x=as.list(txt_tokens), language)
+    #txt_tokens <- tokens_replace(txt_tokens, lemm_tokens$token, lemm_tokens$lemma)
+    txt_tokens <- tokens_replace(txt_tokens, pattern = lexicon::hash_lemmas$token, replacement = lexicon::hash_lemmas$lemma)
   }
   if(stem_opt){
     txt_tokens <- tokens_wordstem(x = txt_tokens, language = language)
@@ -80,9 +86,31 @@ vectorizate_unseen_text <- function(unseen_text, tfidf=TRUE){
   return(tdm)
 }
 
+vectorizate_unseen_text <- function(unseen_text, x, tfidf=TRUE){
+  unseen_text = as.character(unseen_text)
+  my_corpus <- tokens(unseen_text)
+  # tf part
+  tdm <- dfm(my_corpus, tolower=FALSE)
+  tdm <- dfm_weight(tdm, scheme = "count")
+  # match feature names with the model before weighting!
+  tdm <- dfm_match(tdm, featnames(x))
+  
+  # idf part
+  document_frequency = docfreq(x, scheme = "inverse")
+  #there are features in x (models tdm) that have 0 doc freq, prob bcause they appeare few times ??
+  # https://github.com/quanteda/quanteda/blob/master/R/dfm_weight.R
+  # https://quanteda.io/reference/dfm_tfidf.html
+  document_frequency[document_frequency == Inf] = 0
+  j <- as(tdm, "dgTMatrix")@j + 1L
+  tdm@x <- tdm@x * document_frequency[j]
+  attrs <- attributes(tdm)
+  tdm <- quanteda:::rebuild_dfm(tdm, attrs)
+  return(tdm)
+}
+
 load_model <- function(model_path){
   model <- readRDS(model_path)
-  model$x <- NULL
+  #model$x <- NULL
   return(model)
 }
 
@@ -98,9 +126,9 @@ main_pipeline <- function(unseen_text, model){
     unseen_text <- preprocess_unseen_text(unseen_text, stw_opt = use_stw, punct_remove = remove_punctuation, stem_opt = use_stem, 
                                        lemm_opt = use_lemm, custom_sw = custom_stw, language = lang)
   }
-  unseen_tdm <- vectorizate_unseen_text(unseen_text, tfidf = use_tfidf)
+  unseen_tdm <- vectorizate_unseen_text(unseen_text, model$x, tfidf = use_tfidf)
   unseen_tdm <- dfm_replace(unseen_tdm, pattern = "Bias", replacement = "bias")
-  unseen_tdm <- dfm_match(unseen_tdm, colnames(model$weights))
+  #unseen_tdm <- dfm_match(unseen_tdm, colnames(model$weights))
   
   # evaluate
   predicted <- predict(model, newdata = unseen_tdm, type = "class")

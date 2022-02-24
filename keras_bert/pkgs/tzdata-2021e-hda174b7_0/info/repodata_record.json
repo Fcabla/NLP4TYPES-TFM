@@ -1,0 +1,22 @@
+{
+  "build": "hda174b7_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "tzdata-2021e-hda174b7_0.conda",
+  "legacy_bz2_md5": "f9547cfb165f3a179f0cd8c736a6489f",
+  "license": "Public-Domain AND BSD-3-clause",
+  "md5": "b4aabe2891554c7ca519606b879c0ecd",
+  "name": "tzdata",
+  "noarch": "generic",
+  "package_type": "noarch_generic",
+  "sha256": "13dca5cb7d6d0978b5b3a05945a7940f148d17cb69cf64c845aecf27a4af2f85",
+  "size": 114602,
+  "subdir": "noarch",
+  "timestamp": 1635187964841,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/noarch/tzdata-2021e-hda174b7_0.conda",
+  "version": "2021e"
+}

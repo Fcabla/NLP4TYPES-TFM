@@ -1,0 +1,763 @@
+                                                       levelName level
+1   <owl:Thing>                                                      1
+2    ¦--HumanDevelopmentIndex                                        2
+3    ¦--Depth                                                        2
+4    ¦--RouteStop                                                    2
+5    ¦--TopicalConcept                                               2
+6    ¦   ¦--ScientificConcept                                        3
+7    ¦   ¦--Ideology                                                 3
+8    ¦   ¦--TheologicalConcept                                       3
+9    ¦   ¦   °--ChristianDoctrine                                    4
+10   ¦   ¦--Tax                                                      3
+11   ¦   ¦--Fashion                                                  3
+12   ¦   ¦--Taxon                                                    3
+13   ¦   ¦--MathematicalConcept                                      3
+14   ¦   ¦--PoliticalConcept                                         3
+15   ¦   ¦--CardinalDirection                                        3
+16   ¦   ¦--Genre                                                    3
+17   ¦   ¦   ¦--MusicGenre                                           4
+18   ¦   ¦   ¦--ArtisticGenre                                        4
+19   ¦   ¦   ¦--LiteraryGenre                                        4
+20   ¦   ¦   °--MovieGenre                                           4
+21   ¦   ¦--Standard                                                 3
+22   ¦   ¦--AcademicSubject                                          3
+23   ¦   ¦--SystemOfLaw                                              3
+24   ¦   ¦--PhilosophicalConcept                                     3
+25   ¦   °--Type                                                     3
+26   ¦       ¦--DocumentType                                         4
+27   ¦       °--GovernmentType                                       4
+28   ¦--Polyhedron                                                   2
+29   ¦--Species                                                      2
+30   ¦   ¦--Bacteria                                                 3
+31   ¦   ¦--Eukaryote                                                3
+32   ¦   ¦   ¦--Animal                                               4
+33   ¦   ¦   ¦   ¦--Mammal                                           5
+34   ¦   ¦   ¦   ¦   ¦--Horse                                        6
+35   ¦   ¦   ¦   ¦   ¦   °--RaceHorse                                7
+36   ¦   ¦   ¦   ¦   ¦--Dog                                          6
+37   ¦   ¦   ¦   ¦   °--Cat                                          6
+38   ¦   ¦   ¦   ¦--Insect                                           5
+39   ¦   ¦   ¦   ¦--Amphibian                                        5
+40   ¦   ¦   ¦   ¦--Mollusca                                         5
+41   ¦   ¦   ¦   ¦--Reptile                                          5
+42   ¦   ¦   ¦   ¦--Crustacean                                       5
+43   ¦   ¦   ¦   ¦--Fish                                             5
+44   ¦   ¦   ¦   ¦--Arachnid                                         5
+45   ¦   ¦   ¦   °--Bird                                             5
+46   ¦   ¦   ¦--Fungus                                               4
+47   ¦   ¦   °--Plant                                                4
+48   ¦   ¦       ¦--GreenAlga                                        5
+49   ¦   ¦       ¦--Moss                                             5
+50   ¦   ¦       ¦--ClubMoss                                         5
+51   ¦   ¦       ¦--Fern                                             5
+52   ¦   ¦       ¦--FloweringPlant                                   5
+53   ¦   ¦       ¦   °--Grape                                        6
+54   ¦   ¦       ¦--CultivatedVariety                                5
+55   ¦   ¦       ¦--Cycad                                            5
+56   ¦   ¦       ¦--Conifer                                          5
+57   ¦   ¦       ¦--Gnetophytes                                      5
+58   ¦   ¦       °--Ginkgo                                           5
+59   ¦   °--Archaea                                                  3
+60   ¦--ChemicalSubstance                                            2
+61   ¦   ¦--Drug                                                     3
+62   ¦   ¦--ChemicalCompound                                         3
+63   ¦   ¦--ChemicalElement                                          3
+64   ¦   °--Mineral                                                  3
+65   ¦--Unknown                                                      2
+66   ¦--Place                                                        2
+67   ¦   ¦--SiteOfSpecialScientificInterest                          3
+68   ¦   ¦--NaturalPlace                                             3
+69   ¦   ¦   ¦--Valley                                               4
+70   ¦   ¦   ¦--Beach                                                4
+71   ¦   ¦   ¦--Desert                                               4
+72   ¦   ¦   ¦--Glacier                                              4
+73   ¦   ¦   ¦--Forest                                               4
+74   ¦   ¦   ¦--Volcano                                              4
+75   ¦   ¦   ¦--MountainPass                                         4
+76   ¦   ¦   ¦--Mountain                                             4
+77   ¦   ¦   ¦--Cape                                                 4
+78   ¦   ¦   ¦--HotSpring                                            4
+79   ¦   ¦   ¦--Crater                                               4
+80   ¦   ¦   ¦   °--LunarCrater                                      5
+81   ¦   ¦   ¦--BodyOfWater                                          4
+82   ¦   ¦   ¦   ¦--Bay                                              5
+83   ¦   ¦   ¦   ¦--Lake                                             5
+84   ¦   ¦   ¦   ¦--Stream                                           5
+85   ¦   ¦   ¦   ¦   ¦--Creek                                        6
+86   ¦   ¦   ¦   ¦   ¦--Canal                                        6
+87   ¦   ¦   ¦   ¦   °--River                                        6
+88   ¦   ¦   ¦   ¦--Ocean                                            5
+89   ¦   ¦   ¦   °--Sea                                              5
+90   ¦   ¦   ¦--MountainRange                                        4
+91   ¦   ¦   ¦--Cave                                                 4
+92   ¦   ¦   °--Archipelago                                          4
+93   ¦   ¦--Garden                                                   3
+94   ¦   ¦--CelestialBody                                            3
+95   ¦   ¦   ¦--Constellation                                        4
+96   ¦   ¦   ¦--Swarm                                                4
+97   ¦   ¦   ¦   ¦--Openswarm                                        5
+98   ¦   ¦   ¦   °--Globularswarm                                    5
+99   ¦   ¦   ¦--Galaxy                                               4
+100  ¦   ¦   ¦--Planet                                               4
+101  ¦   ¦   ¦--Asteroid                                             4
+102  ¦   ¦   ¦--Star                                                 4
+103  ¦   ¦   ¦   °--BrownDwarf                                       5
+104  ¦   ¦   °--Satellite                                            4
+105  ¦   ¦       °--ArtificialSatellite                              5
+106  ¦   ¦--Monument                                                 3
+107  ¦   ¦   ¦--Memorial                                             4
+108  ¦   ¦   °--GraveMonument                                        4
+109  ¦   ¦--CountrySeat                                              3
+110  ¦   ¦--PopulatedPlace                                           3
+111  ¦   ¦   ¦--Settlement                                           4
+112  ¦   ¦   ¦   ¦--Village                                          5
+113  ¦   ¦   ¦   ¦--Town                                             5
+114  ¦   ¦   ¦   ¦--City                                             5
+115  ¦   ¦   ¦   ¦   ¦--CapitalOfRegion                              6
+116  ¦   ¦   ¦   ¦   °--Capital                                      6
+117  ¦   ¦   ¦   ¦--HistoricalSettlement                             5
+118  ¦   ¦   ¦   °--CityDistrict                                     5
+119  ¦   ¦   ¦--Region                                               4
+120  ¦   ¦   ¦   ¦--AdministrativeRegion                             5
+121  ¦   ¦   ¦   ¦   ¦--ClericalAdministrativeRegion                 6
+122  ¦   ¦   ¦   ¦   ¦   ¦--Diocese                                  7
+123  ¦   ¦   ¦   ¦   ¦   ¦--Parish                                   7
+124  ¦   ¦   ¦   ¦   ¦   °--Deanery                                  7
+125  ¦   ¦   ¦   ¦   ¦--HistoricalAreaOfAuthority                    6
+126  ¦   ¦   ¦   ¦   ¦   °--Fiefdom                                  7
+127  ¦   ¦   ¦   ¦   °--GovernmentalAdministrativeRegion             6
+128  ¦   ¦   ¦   ¦       ¦--MicroRegion                              7
+129  ¦   ¦   ¦   ¦       ¦--Arrondissement                           7
+130  ¦   ¦   ¦   ¦       ¦--District                                 7
+131  ¦   ¦   ¦   ¦       ¦   °--HistoricalDistrict                   8
+132  ¦   ¦   ¦   ¦       ¦--DistrictWaterBoard                       7
+133  ¦   ¦   ¦   ¦       ¦--Department                               7
+134  ¦   ¦   ¦   ¦       ¦   °--OverseasDepartment                   8
+135  ¦   ¦   ¦   ¦       ¦--Regency                                  7
+136  ¦   ¦   ¦   ¦       ¦--Province                                 7
+137  ¦   ¦   ¦   ¦       ¦   °--HistoricalProvince                   8
+138  ¦   ¦   ¦   ¦       ¦--Canton                                   7
+139  ¦   ¦   ¦   ¦       ¦--Municipality                             7
+140  ¦   ¦   ¦   ¦       ¦   °--FormerMunicipality                   8
+141  ¦   ¦   ¦   ¦       ¦--SubMunicipality                          7
+142  ¦   ¦   ¦   ¦       °--Prefecture                               7
+143  ¦   ¦   ¦   ¦--NaturalRegion                                    5
+144  ¦   ¦   ¦   °--HistoricalRegion                                 5
+145  ¦   ¦   ¦--Country                                              4
+146  ¦   ¦   ¦   °--HistoricalCountry                                5
+147  ¦   ¦   ¦--Territory                                            4
+148  ¦   ¦   ¦   °--OldTerritory                                     5
+149  ¦   ¦   ¦--Street                                               4
+150  ¦   ¦   ¦--Community                                            4
+151  ¦   ¦   ¦--GatedCommunity                                       4
+152  ¦   ¦   ¦--Intercommunality                                     4
+153  ¦   ¦   ¦--Continent                                            4
+154  ¦   ¦   ¦--Island                                               4
+155  ¦   ¦   ¦   °--Atoll                                            5
+156  ¦   ¦   ¦--State                                                4
+157  ¦   ¦   ¦--Agglomeration                                        4
+158  ¦   ¦   °--Locality                                             4
+159  ¦   ¦--ConcentrationCamp                                        3
+160  ¦   ¦--Park                                                     3
+161  ¦   ¦--Cemetery                                                 3
+162  ¦   ¦--WorldHeritageSite                                        3
+163  ¦   ¦--ProtectedArea                                            3
+164  ¦   ¦--WineRegion                                               3
+165  ¦   ¦--HistoricPlace                                            3
+166  ¦   ¦--ArchitecturalStructure                                   3
+167  ¦   ¦   ¦--Gate                                                 4
+168  ¦   ¦   ¦--Building                                             4
+169  ¦   ¦   ¦   ¦--Castle                                           5
+170  ¦   ¦   ¦   ¦--Hotel                                            5
+171  ¦   ¦   ¦   ¦--Skyscraper                                       5
+172  ¦   ¦   ¦   ¦--Restaurant                                       5
+173  ¦   ¦   ¦   ¦--ReligiousBuilding                                5
+174  ¦   ¦   ¦   ¦   ¦--Temple                                       6
+175  ¦   ¦   ¦   ¦   ¦--Abbey                                        6
+176  ¦   ¦   ¦   ¦   ¦--Shrine                                       6
+177  ¦   ¦   ¦   ¦   ¦--Monastery                                    6
+178  ¦   ¦   ¦   ¦   ¦--Church                                       6
+179  ¦   ¦   ¦   ¦   ¦--Synagogue                                    6
+180  ¦   ¦   ¦   ¦   °--Mosque                                       6
+181  ¦   ¦   ¦   ¦--Museum                                           5
+182  ¦   ¦   ¦   ¦--Library                                          5
+183  ¦   ¦   ¦   ¦--Casino                                           5
+184  ¦   ¦   ¦   ¦--Factory                                          5
+185  ¦   ¦   ¦   ¦--Hospital                                         5
+186  ¦   ¦   ¦   ¦--HistoricBuilding                                 5
+187  ¦   ¦   ¦   ¦--Prison                                           5
+188  ¦   ¦   ¦   °--ShoppingMall                                     5
+189  ¦   ¦   ¦--Pyramid                                              4
+190  ¦   ¦   ¦--Mill                                                 4
+191  ¦   ¦   ¦   ¦--WindMotor                                        5
+192  ¦   ¦   ¦   ¦--Watermill                                        5
+193  ¦   ¦   ¦   ¦--Treadmill                                        5
+194  ¦   ¦   ¦   °--Windmill                                         5
+195  ¦   ¦   ¦--Arena                                                4
+196  ¦   ¦   ¦--AmusementParkAttraction                              4
+197  ¦   ¦   ¦   ¦--RollerCoaster                                    5
+198  ¦   ¦   ¦   °--WaterRide                                        5
+199  ¦   ¦   ¦--Zoo                                                  4
+200  ¦   ¦   ¦--Tower                                                4
+201  ¦   ¦   ¦   ¦--WaterTower                                       5
+202  ¦   ¦   ¦   °--Lighthouse                                       5
+203  ¦   ¦   ¦--Tunnel                                               4
+204  ¦   ¦   ¦--MilitaryStructure                                    4
+205  ¦   ¦   ¦   °--Fort                                             5
+206  ¦   ¦   ¦--SportFacility                                        4
+207  ¦   ¦   ¦   ¦--Stadium                                          5
+208  ¦   ¦   ¦   ¦--GolfCourse                                       5
+209  ¦   ¦   ¦   ¦--RaceTrack                                        5
+210  ¦   ¦   ¦   ¦   °--Racecourse                                   6
+211  ¦   ¦   ¦   ¦--CricketGround                                    5
+212  ¦   ¦   ¦   °--SkiArea                                          5
+213  ¦   ¦   ¦       °--SkiResort                                    6
+214  ¦   ¦   ¦--Venue                                                4
+215  ¦   ¦   ¦   °--Theatre                                          5
+216  ¦   ¦   ¦--Square                                               4
+217  ¦   ¦   °--Infrastructure                                       4
+218  ¦   ¦       ¦--Station                                          5
+219  ¦   ¦       ¦   ¦--RailwayStation                               6
+220  ¦   ¦       ¦   ¦--MetroStation                                 6
+221  ¦   ¦       ¦   ¦--TramStation                                  6
+222  ¦   ¦       ¦   ¦--ElectricalSubstation                         6
+223  ¦   ¦       ¦   °--FillingStation                               6
+224  ¦   ¦       ¦--RouteOfTransportation                            5
+225  ¦   ¦       ¦   ¦--RoadJunction                                 6
+226  ¦   ¦       ¦   ¦--Bridge                                       6
+227  ¦   ¦       ¦   ¦--RailwayTunnel                                6
+228  ¦   ¦       ¦   ¦--RailwayLine                                  6
+229  ¦   ¦       ¦   ¦--Road                                         6
+230  ¦   ¦       ¦   ¦--WaterwayTunnel                               6
+231  ¦   ¦       ¦   °--RoadTunnel                                   6
+232  ¦   ¦       ¦--Lock                                             5
+233  ¦   ¦       ¦--LaunchPad                                        5
+234  ¦   ¦       ¦--Port                                             5
+235  ¦   ¦       ¦--Dam                                              5
+236  ¦   ¦       ¦--PowerStation                                     5
+237  ¦   ¦       ¦   °--NuclearPowerStation                          6
+238  ¦   ¦       ¦--Airport                                          5
+239  ¦   ¦       ¦--RestArea                                         5
+240  ¦   ¦       °--Dike                                             5
+241  ¦   °--Mine                                                     3
+242  ¦       °--CoalPit                                              4
+243  ¦--Biomolecule                                                  2
+244  ¦   ¦--Hormone                                                  3
+245  ¦   ¦--Lipid                                                    3
+246  ¦   ¦--Enzyme                                                   3
+247  ¦   ¦--Protein                                                  3
+248  ¦   ¦--Gene                                                     3
+249  ¦   ¦   ¦--MouseGene                                            4
+250  ¦   ¦   °--HumanGene                                            4
+251  ¦   °--Polysaccharide                                           3
+252  ¦--List                                                         2
+253  ¦   °--TrackList                                                3
+254  ¦--Medicine                                                     2
+255  ¦--Relationship                                                 2
+256  ¦   °--Ratio                                                    3
+257  ¦--Demographics                                                 2
+258  ¦--ElectionDiagram                                              2
+259  ¦--GrossDomesticProductPerCapita                                2
+260  ¦--Disease                                                      2
+261  ¦--PublicService                                                2
+262  ¦--Agent                                                        2
+263  ¦   ¦--Person                                                   3
+264  ¦   ¦   ¦--Chef                                                 4
+265  ¦   ¦   ¦--Royalty                                              4
+266  ¦   ¦   ¦   °--BritishRoyalty                                   5
+267  ¦   ¦   ¦       °--Baronet                                      6
+268  ¦   ¦   ¦--TelevisionDirector                                   4
+269  ¦   ¦   ¦--MemberResistanceMovement                             4
+270  ¦   ¦   ¦--Presenter                                            4
+271  ¦   ¦   ¦   ¦--RadioHost                                        5
+272  ¦   ¦   ¦   °--TelevisionHost                                   5
+273  ¦   ¦   ¦--Linguist                                             4
+274  ¦   ¦   ¦--Coach                                                4
+275  ¦   ¦   ¦   ¦--CollegeCoach                                     5
+276  ¦   ¦   ¦   ¦--VolleyballCoach                                  5
+277  ¦   ¦   ¦   °--AmericanFootballCoach                            5
+278  ¦   ¦   ¦--Aristocrat                                           4
+279  ¦   ¦   ¦--Philosopher                                          4
+280  ¦   ¦   ¦--Egyptologist                                         4
+281  ¦   ¦   ¦--Politician                                           4
+282  ¦   ¦   ¦   ¦--Congressman                                      5
+283  ¦   ¦   ¦   ¦--Mayor                                            5
+284  ¦   ¦   ¦   ¦--MemberOfParliament                               5
+285  ¦   ¦   ¦   ¦--Deputy                                           5
+286  ¦   ¦   ¦   ¦--VicePresident                                    5
+287  ¦   ¦   ¦   ¦--Governor                                         5
+288  ¦   ¦   ¦   ¦--VicePrimeMinister                                5
+289  ¦   ¦   ¦   ¦--PrimeMinister                                    5
+290  ¦   ¦   ¦   ¦--Chancellor                                       5
+291  ¦   ¦   ¦   ¦--President                                        5
+292  ¦   ¦   ¦   ¦--Senator                                          5
+293  ¦   ¦   ¦   °--Lieutenant                                       5
+294  ¦   ¦   ¦--Referee                                              4
+295  ¦   ¦   ¦--Astronaut                                            4
+296  ¦   ¦   ¦--HorseTrainer                                         4
+297  ¦   ¦   ¦--TelevisionPersonality                                4
+298  ¦   ¦   ¦   °--Host                                             5
+299  ¦   ¦   ¦--Celebrity                                            4
+300  ¦   ¦   ¦--Producer                                             4
+301  ¦   ¦   ¦--Religious                                            4
+302  ¦   ¦   ¦--Psychologist                                         4
+303  ¦   ¦   ¦--Model                                                4
+304  ¦   ¦   ¦--OfficeHolder                                         4
+305  ¦   ¦   ¦--Economist                                            4
+306  ¦   ¦   ¦--Architect                                            4
+307  ¦   ¦   ¦--BusinessPerson                                       4
+308  ¦   ¦   ¦--Farmer                                               4
+309  ¦   ¦   ¦--Noble                                                4
+310  ¦   ¦   ¦--Writer                                               4
+311  ¦   ¦   ¦   ¦--PlayWright                                       5
+312  ¦   ¦   ¦   ¦--MusicComposer                                    5
+313  ¦   ¦   ¦   ¦--Historian                                        5
+314  ¦   ¦   ¦   ¦--SongWriter                                       5
+315  ¦   ¦   ¦   ¦--ScreenWriter                                     5
+316  ¦   ¦   ¦   °--Poet                                             5
+317  ¦   ¦   ¦--Lawyer                                               4
+318  ¦   ¦   ¦--TheatreDirector                                      4
+319  ¦   ¦   ¦--Monarch                                              4
+320  ¦   ¦   ¦--Cleric                                               4
+321  ¦   ¦   ¦   ¦--ChristianPatriarch                               5
+322  ¦   ¦   ¦   ¦--Vicar                                            5
+323  ¦   ¦   ¦   ¦--Cardinal                                         5
+324  ¦   ¦   ¦   ¦--Saint                                            5
+325  ¦   ¦   ¦   ¦--ChristianBishop                                  5
+326  ¦   ¦   ¦   ¦--Priest                                           5
+327  ¦   ¦   ¦   °--Pope                                             5
+328  ¦   ¦   ¦--PoliticianSpouse                                     4
+329  ¦   ¦   ¦--Ambassador                                           4
+330  ¦   ¦   ¦--BeautyQueen                                          4
+331  ¦   ¦   ¦--Athlete                                              4
+332  ¦   ¦   ¦   ¦--Jockey                                           5
+333  ¦   ¦   ¦   ¦--SoccerPlayer                                     5
+334  ¦   ¦   ¦   ¦--MartialArtist                                    5
+335  ¦   ¦   ¦   ¦--MotorsportRacer                                  5
+336  ¦   ¦   ¦   ¦   ¦--RacingDriver                                 6
+337  ¦   ¦   ¦   ¦   ¦   ¦--FormulaOneRacer                          7
+338  ¦   ¦   ¦   ¦   ¦   ¦--RallyDriver                              7
+339  ¦   ¦   ¦   ¦   ¦   ¦--NascarDriver                             7
+340  ¦   ¦   ¦   ¦   ¦   °--DTMRacer                                 7
+341  ¦   ¦   ¦   ¦   °--MotorcycleRider                              6
+342  ¦   ¦   ¦   ¦       ¦--SpeedwayRider                            7
+343  ¦   ¦   ¦   ¦       °--MotocycleRacer                           7
+344  ¦   ¦   ¦   ¦--Cyclist                                          5
+345  ¦   ¦   ¦   ¦--Cricketer                                        5
+346  ¦   ¦   ¦   ¦--GridironFootballPlayer                           5
+347  ¦   ¦   ¦   ¦   ¦--AmericanFootballPlayer                       6
+348  ¦   ¦   ¦   ¦   °--CanadianFootballPlayer                       6
+349  ¦   ¦   ¦   ¦--DartsPlayer                                      5
+350  ¦   ¦   ¦   ¦--AustralianRulesFootballPlayer                    5
+351  ¦   ¦   ¦   ¦--VolleyballPlayer                                 5
+352  ¦   ¦   ¦   ¦   °--BeachVolleyballPlayer                        6
+353  ¦   ¦   ¦   ¦--Swimmer                                          5
+354  ¦   ¦   ¦   ¦--GaelicGamesPlayer                                5
+355  ¦   ¦   ¦   ¦--SquashPlayer                                     5
+356  ¦   ¦   ¦   ¦--PokerPlayer                                      5
+357  ¦   ¦   ¦   ¦--BullFighter                                      5
+358  ¦   ¦   ¦   ¦--ArcherPlayer                                     5
+359  ¦   ¦   ¦   ¦--LacrossePlayer                                   5
+360  ¦   ¦   ¦   ¦--BadmintonPlayer                                  5
+361  ¦   ¦   ¦   ¦--Gymnast                                          5
+362  ¦   ¦   ¦   ¦--Canoeist                                         5
+363  ¦   ¦   ¦   ¦--BaseballPlayer                                   5
+364  ¦   ¦   ¦   ¦--BasketballPlayer                                 5
+365  ¦   ¦   ¦   ¦--TeamMember                                       5
+366  ¦   ¦   ¦   ¦--NationalCollegiateAthleticAssociationAthlete     5
+367  ¦   ¦   ¦   ¦--WinterSportPlayer                                5
+368  ¦   ¦   ¦   ¦   ¦--IceHockeyPlayer                              6
+369  ¦   ¦   ¦   ¦   ¦--FigureSkater                                 6
+370  ¦   ¦   ¦   ¦   ¦--SpeedSkater                                  6
+371  ¦   ¦   ¦   ¦   ¦--Ski_jumper                                   6
+372  ¦   ¦   ¦   ¦   ¦--Biathlete                                    6
+373  ¦   ¦   ¦   ¦   ¦--BobsleighAthlete                             6
+374  ¦   ¦   ¦   ¦   ¦--Skater                                       6
+375  ¦   ¦   ¦   ¦   ¦--CrossCountrySkier                            6
+376  ¦   ¦   ¦   ¦   ¦--Curler                                       6
+377  ¦   ¦   ¦   ¦   ¦--NordicCombined                               6
+378  ¦   ¦   ¦   ¦   °--Skier                                        6
+379  ¦   ¦   ¦   ¦--WaterPoloPlayer                                  5
+380  ¦   ¦   ¦   ¦--SnookerPlayer                                    5
+381  ¦   ¦   ¦   ¦   °--SnookerChamp                                 6
+382  ¦   ¦   ¦   ¦--TennisPlayer                                     5
+383  ¦   ¦   ¦   ¦--GolfPlayer                                       5
+384  ¦   ¦   ¦   ¦--ChessPlayer                                      5
+385  ¦   ¦   ¦   ¦--RugbyPlayer                                      5
+386  ¦   ¦   ¦   ¦--NetballPlayer                                    5
+387  ¦   ¦   ¦   ¦--Surfer                                           5
+388  ¦   ¦   ¦   ¦--TableTennisPlayer                                5
+389  ¦   ¦   ¦   ¦--HorseRider                                       5
+390  ¦   ¦   ¦   ¦--Bodybuilder                                      5
+391  ¦   ¦   ¦   ¦--HighDiver                                        5
+392  ¦   ¦   ¦   ¦--Boxer                                            5
+393  ¦   ¦   ¦   ¦   °--AmateurBoxer                                 6
+394  ¦   ¦   ¦   ¦--Wrestler                                         5
+395  ¦   ¦   ¦   ¦   °--SumoWrestler                                 6
+396  ¦   ¦   ¦   ¦--AthleticsPlayer                                  5
+397  ¦   ¦   ¦   ¦--Rower                                            5
+398  ¦   ¦   ¦   ¦--Fencer                                           5
+399  ¦   ¦   ¦   °--HandballPlayer                                   5
+400  ¦   ¦   ¦--FictionalCharacter                                   4
+401  ¦   ¦   ¦   ¦--NarutoCharacter                                  5
+402  ¦   ¦   ¦   ¦--DisneyCharacter                                  5
+403  ¦   ¦   ¦   ¦--MythologicalFigure                               5
+404  ¦   ¦   ¦   ¦--ComicsCharacter                                  5
+405  ¦   ¦   ¦   ¦   °--AnimangaCharacter                            6
+406  ¦   ¦   ¦   °--SoapCharacter                                    5
+407  ¦   ¦   ¦--Engineer                                             4
+408  ¦   ¦   ¦--OrganisationMember                                   4
+409  ¦   ¦   ¦   °--SportsTeamMember                                 5
+410  ¦   ¦   ¦--Journalist                                           4
+411  ¦   ¦   ¦--Artist                                               4
+412  ¦   ¦   ¦   ¦--Actor                                            5
+413  ¦   ¦   ¦   ¦   ¦--VoiceActor                                   6
+414  ¦   ¦   ¦   ¦   °--AdultActor                                   6
+415  ¦   ¦   ¦   ¦--MusicalArtist                                    5
+416  ¦   ¦   ¦   ¦   ¦--BackScene                                    6
+417  ¦   ¦   ¦   ¦   ¦--MusicDirector                                6
+418  ¦   ¦   ¦   ¦   ¦--Instrumentalist                              6
+419  ¦   ¦   ¦   ¦   ¦   °--Guitarist                                7
+420  ¦   ¦   ¦   ¦   ¦--ClassicalMusicArtist                         6
+421  ¦   ¦   ¦   ¦   °--Singer                                       6
+422  ¦   ¦   ¦   ¦--Painter                                          5
+423  ¦   ¦   ¦   ¦--ComicsCreator                                    5
+424  ¦   ¦   ¦   ¦--Comedian                                         5
+425  ¦   ¦   ¦   ¦--FashionDesigner                                  5
+426  ¦   ¦   ¦   ¦--Photographer                                     5
+427  ¦   ¦   ¦   ¦--Sculptor                                         5
+428  ¦   ¦   ¦   ¦--Dancer                                           5
+429  ¦   ¦   ¦   °--Humorist                                         5
+430  ¦   ¦   ¦--MilitaryPerson                                       4
+431  ¦   ¦   ¦--Judge                                                4
+432  ¦   ¦   ¦--Criminal                                             4
+433  ¦   ¦   ¦   °--Murderer                                         5
+434  ¦   ¦   ¦       °--SerialKiller                                 6
+435  ¦   ¦   ¦--Orphan                                               4
+436  ¦   ¦   ¦--SportsManager                                        4
+437  ¦   ¦   ¦   °--SoccerManager                                    5
+438  ¦   ¦   ¦--PlayboyPlaymate                                      4
+439  ¦   ¦   ¦--Scientist                                            4
+440  ¦   ¦   ¦   ¦--Medician                                         5
+441  ¦   ¦   ¦   ¦--Biologist                                        5
+442  ¦   ¦   ¦   ¦--Professor                                        5
+443  ¦   ¦   ¦   °--Entomologist                                     5
+444  ¦   ¦   ¦--RomanEmperor                                         4
+445  ¦   ¦   ¦--Archeologist                                         4
+446  ¦   ¦   °--MovieDirector                                        4
+447  ¦   ¦--Deity                                                    3
+448  ¦   ¦--Family                                                   3
+449  ¦   ¦   °--NobleFamily                                          4
+450  ¦   ¦--Organisation                                             3
+451  ¦   ¦   ¦--Group                                                4
+452  ¦   ¦   ¦   ¦--Band                                             5
+453  ¦   ¦   ¦   °--ComedyGroup                                      5
+454  ¦   ¦   ¦--Non-ProfitOrganisation                               4
+455  ¦   ¦   ¦   °--RecordOffice                                     5
+456  ¦   ¦   ¦--TradeUnion                                           4
+457  ¦   ¦   ¦--SportsClub                                           4
+458  ¦   ¦   ¦   °--HockeyClub                                       5
+459  ¦   ¦   ¦--Broadcaster                                          4
+460  ¦   ¦   ¦   ¦--TelevisionStation                                5
+461  ¦   ¦   ¦   ¦--BroadcastNetwork                                 5
+462  ¦   ¦   ¦   °--RadioStation                                     5
+463  ¦   ¦   ¦--EmployersOrganisation                                4
+464  ¦   ¦   ¦--SambaSchool                                          4
+465  ¦   ¦   ¦--SportsLeague                                         4
+466  ¦   ¦   ¦   ¦--CricketLeague                                    5
+467  ¦   ¦   ¦   ¦--RugbyLeague                                      5
+468  ¦   ¦   ¦   ¦--FieldHockeyLeague                                5
+469  ¦   ¦   ¦   ¦--AmericanFootballLeague                           5
+470  ¦   ¦   ¦   ¦--SoccerLeague                                     5
+471  ¦   ¦   ¦   ¦--TennisLeague                                     5
+472  ¦   ¦   ¦   ¦--SpeedwayLeague                                   5
+473  ¦   ¦   ¦   ¦--CurlingLeague                                    5
+474  ¦   ¦   ¦   ¦--InlineHockeyLeague                               5
+475  ¦   ¦   ¦   ¦--MotorcycleRacingLeague                           5
+476  ¦   ¦   ¦   ¦--AustralianFootballLeague                         5
+477  ¦   ¦   ¦   ¦--BaseballLeague                                   5
+478  ¦   ¦   ¦   ¦--BoxingLeague                                     5
+479  ¦   ¦   ¦   ¦--PaintballLeague                                  5
+480  ¦   ¦   ¦   ¦--MixedMartialArtsLeague                           5
+481  ¦   ¦   ¦   ¦--AutoRacingLeague                                 5
+482  ¦   ¦   ¦   ¦--GolfLeague                                       5
+483  ¦   ¦   ¦   ¦--VideogamesLeague                                 5
+484  ¦   ¦   ¦   ¦--HandballLeague                                   5
+485  ¦   ¦   ¦   ¦--IceHockeyLeague                                  5
+486  ¦   ¦   ¦   ¦--SoftballLeague                                   5
+487  ¦   ¦   ¦   ¦--LacrosseLeague                                   5
+488  ¦   ¦   ¦   ¦--VolleyballLeague                                 5
+489  ¦   ¦   ¦   ¦--PoloLeague                                       5
+490  ¦   ¦   ¦   ¦--CanadianFootballLeague                           5
+491  ¦   ¦   ¦   ¦--RadioControlledRacingLeague                      5
+492  ¦   ¦   ¦   ¦--FormulaOneRacing                                 5
+493  ¦   ¦   ¦   ¦--CyclingLeague                                    5
+494  ¦   ¦   ¦   ¦--BasketballLeague                                 5
+495  ¦   ¦   ¦   °--BowlingLeague                                    5
+496  ¦   ¦   ¦--GeopoliticalOrganisation                             4
+497  ¦   ¦   ¦--SportsTeam                                           4
+498  ¦   ¦   ¦   ¦--SpeedwayTeam                                     5
+499  ¦   ¦   ¦   ¦--CanadianFootballTeam                             5
+500  ¦   ¦   ¦   ¦--RugbyClub                                        5
+501  ¦   ¦   ¦   ¦--AmericanFootballTeam                             5
+502  ¦   ¦   ¦   ¦--AustralianFootballTeam                           5
+503  ¦   ¦   ¦   ¦--HandballTeam                                     5
+504  ¦   ¦   ¦   ¦--FormulaOneTeam                                   5
+505  ¦   ¦   ¦   ¦--BasketballTeam                                   5
+506  ¦   ¦   ¦   ¦--HockeyTeam                                       5
+507  ¦   ¦   ¦   ¦--CricketTeam                                      5
+508  ¦   ¦   ¦   ¦--CyclingTeam                                      5
+509  ¦   ¦   ¦   ¦--SoccerClub                                       5
+510  ¦   ¦   ¦   ¦   °--NationalSoccerClub                           6
+511  ¦   ¦   ¦   °--BaseballTeam                                     5
+512  ¦   ¦   ¦--Legislature                                          4
+513  ¦   ¦   ¦--ReligiousOrganisation                                4
+514  ¦   ¦   ¦   °--ClericalOrder                                    5
+515  ¦   ¦   ¦--GovernmentAgency                                     4
+516  ¦   ¦   ¦   °--GovernmentCabinet                                5
+517  ¦   ¦   ¦--EducationalInstitution                               4
+518  ¦   ¦   ¦   ¦--Library                                          5
+519  ¦   ¦   ¦   ¦--School                                           5
+520  ¦   ¦   ¦   ¦--College                                          5
+521  ¦   ¦   ¦   °--University                                       5
+522  ¦   ¦   ¦--PublicTransitSystem                                  4
+523  ¦   ¦   ¦--Parliament                                           4
+524  ¦   ¦   ¦--MilitaryUnit                                         4
+525  ¦   ¦   ¦--PoliticalParty                                       4
+526  ¦   ¦   ¦--TermOfOffice                                         4
+527  ¦   ¦   ¦--Company                                              4
+528  ¦   ¦   ¦   ¦--Brewery                                          5
+529  ¦   ¦   ¦   ¦--Publisher                                        5
+530  ¦   ¦   ¦   ¦--Winery                                           5
+531  ¦   ¦   ¦   ¦--Bank                                             5
+532  ¦   ¦   ¦   ¦--BusCompany                                       5
+533  ¦   ¦   ¦   ¦--RecordLabel                                      5
+534  ¦   ¦   ¦   ¦--LawFirm                                          5
+535  ¦   ¦   ¦   ¦--Caterer                                          5
+536  ¦   ¦   ¦   °--Airline                                          5
+537  ¦   ¦   °--InternationalOrganisation                            4
+538  ¦   °--Employer                                                 3
+539  ¦--Award                                                        2
+540  ¦   ¦--Decoration                                               3
+541  ¦   °--NobelPrize                                               3
+542  ¦--Diploma                                                      2
+543  ¦--Statistic                                                    2
+544  ¦--Currency                                                     2
+545  ¦--Language                                                     2
+546  ¦   °--ProgrammingLanguage                                      3
+547  ¦--Altitude                                                     2
+548  ¦--Blazon                                                       2
+549  ¦--Work                                                         2
+550  ¦   ¦--CollectionOfValuables                                    3
+551  ¦   ¦   °--Archive                                              4
+552  ¦   ¦--Film                                                     3
+553  ¦   ¦--WrittenWork                                              3
+554  ¦   ¦   ¦--Comic                                                4
+555  ¦   ¦   ¦   ¦--ComicStrip                                       5
+556  ¦   ¦   ¦   ¦--Manhua                                           5
+557  ¦   ¦   ¦   ¦--Manhwa                                           5
+558  ¦   ¦   ¦   °--Manga                                            5
+559  ¦   ¦   ¦--Letter                                               4
+560  ¦   ¦   ¦--MultiVolumePublication                               4
+561  ¦   ¦   ¦--StatedResolution                                     4
+562  ¦   ¦   ¦--Annotation                                           4
+563  ¦   ¦   ¦   °--Reference                                        5
+564  ¦   ¦   ¦--Treaty                                               4
+565  ¦   ¦   ¦--Play                                                 4
+566  ¦   ¦   ¦--PeriodicalLiterature                                 4
+567  ¦   ¦   ¦   ¦--Magazine                                         5
+568  ¦   ¦   ¦   ¦--Newspaper                                        5
+569  ¦   ¦   ¦   ¦--UndergroundJournal                               5
+570  ¦   ¦   ¦   °--AcademicJournal                                  5
+571  ¦   ¦   ¦--Drama                                                4
+572  ¦   ¦   ¦--Law                                                  4
+573  ¦   ¦   ¦--Article                                              4
+574  ¦   ¦   ¦--Resume                                               4
+575  ¦   ¦   ¦--Quote                                                4
+576  ¦   ¦   ¦--Poem                                                 4
+577  ¦   ¦   °--Book                                                 4
+578  ¦   ¦       °--Novel                                            5
+579  ¦   ¦           °--LightNovel                                   6
+580  ¦   ¦--LineOfFashion                                            3
+581  ¦   ¦--Cartoon                                                  3
+582  ¦   ¦   ¦--Anime                                                4
+583  ¦   ¦   °--HollywoodCartoon                                     4
+584  ¦   ¦--MusicalWork                                              3
+585  ¦   ¦   ¦--Opera                                                4
+586  ¦   ¦   ¦--Album                                                4
+587  ¦   ¦   ¦--Single                                               4
+588  ¦   ¦   ¦--ClassicalMusicComposition                            4
+589  ¦   ¦   ¦--Musical                                              4
+590  ¦   ¦   ¦--Song                                                 4
+591  ¦   ¦   ¦   °--EurovisionSongContestEntry                       5
+592  ¦   ¦   ¦--ArtistDiscography                                    4
+593  ¦   ¦   °--NationalAnthem                                       4
+594  ¦   ¦--Website                                                  3
+595  ¦   ¦--TelevisionSeason                                         3
+596  ¦   ¦--TelevisionEpisode                                        3
+597  ¦   ¦--TelevisionShow                                           3
+598  ¦   ¦--Document                                                 3
+599  ¦   ¦   ¦--Image                                                4
+600  ¦   ¦   ¦   ¦--StillImage                                       5
+601  ¦   ¦   ¦   °--MovingImage                                      5
+602  ¦   ¦   ¦--File                                                 4
+603  ¦   ¦   °--Sound                                                4
+604  ¦   ¦--Database                                                 3
+605  ¦   ¦   °--BiologicalDatabase                                   4
+606  ¦   ¦--Artwork                                                  3
+607  ¦   ¦   ¦--Sculpture                                            4
+608  ¦   ¦   °--Painting                                             4
+609  ¦   ¦--RadioProgram                                             3
+610  ¦   °--Software                                                 3
+611  ¦       °--VideoGame                                            4
+612  ¦--Media                                                        2
+613  ¦--Food                                                         2
+614  ¦   ¦--Beverage                                                 3
+615  ¦   ¦   ¦--Wine                                                 4
+616  ¦   ¦   ¦   °--ControlledDesignationOfOriginWine                5
+617  ¦   ¦   ¦--Beer                                                 4
+618  ¦   ¦   °--Vodka                                                4
+619  ¦   °--Cheese                                                   3
+620  ¦--Activity                                                     2
+621  ¦   ¦--Sport                                                    3
+622  ¦   ¦   ¦--TeamSport                                            4
+623  ¦   ¦   ¦   °--Soccer                                           5
+624  ¦   ¦   ¦--Athletics                                            4
+625  ¦   ¦   ¦--Boxing                                               4
+626  ¦   ¦   ¦   ¦--BoxingCategory                                   5
+627  ¦   ¦   ¦   °--BoxingStyle                                      5
+628  ¦   ¦   °--HorseRiding                                          4
+629  ¦   ¦--Sales                                                    3
+630  ¦   °--Game                                                     3
+631  ¦       ¦--CardGame                                             4
+632  ¦       °--BoardGame                                            4
+633  ¦--PenaltyShootOut                                              2
+634  ¦--Population                                                   2
+635  ¦--Colour                                                       2
+636  ¦--Flag                                                         2
+637  ¦--UnitOfWork                                                   2
+638  ¦   ¦--Case                                                     3
+639  ¦   ¦   °--LegalCase                                            4
+640  ¦   ¦       °--SupremeCourtOfTheUnitedStatesCase                5
+641  ¦   °--Project                                                  3
+642  ¦       °--ResearchProject                                      4
+643  ¦--MeanOfTransportation                                         2
+644  ¦   ¦--Locomotive                                               3
+645  ¦   ¦--MilitaryVehicle                                          3
+646  ¦   ¦--TrainCarriage                                            3
+647  ¦   ¦--Ship                                                     3
+648  ¦   ¦--Spacecraft                                               3
+649  ¦   ¦--SpaceStation                                             3
+650  ¦   ¦--Rocket                                                   3
+651  ¦   ¦--Automobile                                               3
+652  ¦   ¦--Train                                                    3
+653  ¦   ¦--Tram                                                     3
+654  ¦   ¦--Aircraft                                                 3
+655  ¦   ¦   °--MilitaryAircraft                                     4
+656  ¦   ¦--Motorcycle                                               3
+657  ¦   ¦--On-SiteTransportation                                    3
+658  ¦   ¦   ¦--ConveyorSystem                                       4
+659  ¦   ¦   ¦--Escalator                                            4
+660  ¦   ¦   °--MovingWalkway                                        4
+661  ¦   °--SpaceShuttle                                             3
+662  ¦--Holiday                                                      2
+663  ¦--EthnicGroup                                                  2
+664  ¦--ChartsPlacements                                             2
+665  ¦--PersonFunction                                               2
+666  ¦   ¦--PoliticalFunction                                        3
+667  ¦   °--Profession                                               3
+668  ¦--Device                                                       2
+669  ¦   ¦--InformationAppliance                                     3
+670  ¦   ¦--Weapon                                                   3
+671  ¦   ¦--MobilePhone                                              3
+672  ¦   ¦--Engine                                                   3
+673  ¦   ¦   ¦--AutomobileEngine                                     4
+674  ¦   ¦   °--RocketEngine                                         4
+675  ¦   ¦--Camera                                                   3
+676  ¦   ¦   °--DigitalCamera                                        4
+677  ¦   °--Instrument                                               3
+678  ¦       ¦--Organ                                                4
+679  ¦       °--Guitar                                               4
+680  ¦--Event                                                        2
+681  ¦   ¦--Competition                                              3
+682  ¦   ¦   °--Contest                                              4
+683  ¦   ¦--LifeCycleEvent                                           3
+684  ¦   ¦   °--PersonalEvent                                        4
+685  ¦   ¦       ¦--Marriage                                         5
+686  ¦   ¦       ¦--Death                                            5
+687  ¦   ¦       ¦--Divorce                                          5
+688  ¦   ¦       °--Birth                                            5
+689  ¦   ¦--SocietalEvent                                            3
+690  ¦   ¦   ¦--Election                                             4
+691  ¦   ¦   ¦--MilitaryConflict                                     4
+692  ¦   ¦   ¦--Rebellion                                            4
+693  ¦   ¦   ¦--Meeting                                              4
+694  ¦   ¦   ¦--FilmFestival                                         4
+695  ¦   ¦   ¦--AcademicConference                                   4
+696  ¦   ¦   ¦--Convention                                           4
+697  ¦   ¦   ¦--Attack                                               4
+698  ¦   ¦   ¦--SpaceMission                                         4
+699  ¦   ¦   ¦--MusicFestival                                        4
+700  ¦   ¦   °--SportsEvent                                          4
+701  ¦   ¦       ¦--GrandPrix                                        5
+702  ¦   ¦       ¦--MixedMartialArtsEvent                            5
+703  ¦   ¦       ¦--Tournament                                       5
+704  ¦   ¦       ¦   ¦--WomensTennisAssociationTournament            6
+705  ¦   ¦       ¦   ¦--GolfTournament                               6
+706  ¦   ¦       ¦   ¦--TennisTournament                             6
+707  ¦   ¦       ¦   °--SoccerTournament                             6
+708  ¦   ¦       ¦--WrestlingEvent                                   5
+709  ¦   ¦       ¦--NationalFootballLeagueEvent                      5
+710  ¦   ¦       ¦--FootballMatch                                    5
+711  ¦   ¦       ¦--Olympics                                         5
+712  ¦   ¦       ¦   °--OlympicEvent                                 6
+713  ¦   ¦       ¦--CyclingCompetition                               5
+714  ¦   ¦       ¦--Race                                             5
+715  ¦   ¦       ¦   ¦--MotorRace                                    6
+716  ¦   ¦       ¦   ¦--CyclingRace                                  6
+717  ¦   ¦       ¦   °--HorseRace                                    6
+718  ¦   ¦       °--InternationalFootballLeagueEvent                 5
+719  ¦   °--NaturalEvent                                             3
+720  ¦       ¦--Earthquake                                           4
+721  ¦       ¦--StormSurge                                           4
+722  ¦       °--SolarEclipse                                         4
+723  ¦--GeneLocation                                                 2
+724  ¦   ¦--MouseGeneLocation                                        3
+725  ¦   °--HumanGeneLocation                                        3
+726  ¦--Area                                                         2
+727  ¦--Name                                                         2
+728  ¦   ¦--Surname                                                  3
+729  ¦   °--GivenName                                                3
+730  ¦--SportCompetitionResult                                       2
+731  ¦   ¦--OlympicResult                                            3
+732  ¦   °--SnookerWorldRanking                                      3
+733  ¦--SportsSeason                                                 2
+734  ¦   ¦--MotorsportSeason                                         3
+735  ¦   °--SportsTeamSeason                                         3
+736  ¦       ¦--FootballLeagueSeason                                 4
+737  ¦       ¦   °--NationalFootballLeagueSeason                     5
+738  ¦       ¦--BaseballSeason                                       4
+739  ¦       ¦--SoccerClubSeason                                     4
+740  ¦       ¦--SoccerLeagueSeason                                   4
+741  ¦       °--NCAATeamSeason                                       4
+742  ¦--GrossDomesticProduct                                         2
+743  ¦--AnatomicalStructure                                          2
+744  ¦   ¦--Muscle                                                   3
+745  ¦   ¦--Lymph                                                    3
+746  ¦   ¦--Vein                                                     3
+747  ¦   ¦--Nerve                                                    3
+748  ¦   ¦--Bone                                                     3
+749  ¦   ¦--Embryology                                               3
+750  ¦   ¦--Ligament                                                 3
+751  ¦   ¦--Brain                                                    3
+752  ¦   ¦--Artery                                                   3
+753  ¦   °--BloodVessel                                              3
+754  °--TimePeriod                                                   2
+755      ¦--HistoricalPeriod                                         3
+756      ¦--PrehistoricalPeriod                                      3
+757      ¦--GeologicalPeriod                                         3
+758      ¦--Year                                                     3
+759      ¦--ProtohistoricalPeriod                                    3
+760      ¦--PeriodOfArtisticStyle                                    3
+761      ¦--YearInSpaceflight                                        3
+762      °--CareerStation                                            3

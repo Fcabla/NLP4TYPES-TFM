@@ -1,0 +1,5 @@
+{
+  "home": "http://certifi.io/",
+  "license": "ISC",
+  "summary": "Python package for providing Mozilla's CA Bundle."
+}

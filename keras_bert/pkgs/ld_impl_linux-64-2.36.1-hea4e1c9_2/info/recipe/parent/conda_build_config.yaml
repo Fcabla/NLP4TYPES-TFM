@@ -1,0 +1,22 @@
+ctng_cpu_arch:
+  - x86_64
+  - powerpc64le
+  - aarch64
+  - s390x
+ctng_vendor:
+  - conda_cos6
+  - conda_cos7
+  - conda_cos7
+  - conda_cos7
+ctng_target_platform:
+  - linux-64
+  - linux-ppc64le
+  - linux-aarch64
+  - linux-s390x
+cxx_compiler:       # [linux]
+  - gcc_bootstrap   # [linux]
+zip_keys:
+  -
+    - ctng_cpu_arch
+    - ctng_vendor
+    - ctng_target_platform
